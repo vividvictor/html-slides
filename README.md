@@ -1,80 +1,80 @@
-# HTML Slides — Self-Contained Presentation Generator
+# HTML Slides — 自包含演示文稿生成器
 
-> Generate stunning, animation-rich, self-contained HTML presentations from scratch or by converting PowerPoint files.
+> 从零开始或通过转换 PowerPoint 文件，生成精美、动画丰富、自包含的 HTML 演示文稿。
 
-Zero dependencies. Single HTML file with inline CSS/JS. Open in any browser and present.
+零依赖。单一 HTML 文件，CSS/JS 全部内联。浏览器打开即可演示。
 
-## Features
+## 特性
 
-- **Zero Dependencies** — Single HTML file, all CSS/JS inline. No npm, no build tools.
-- **Fixed 16:9 Stage** — 1920×1080 slide canvas that scales uniformly to any viewport. No reflow on mobile.
-- **Style Discovery** — Generate 3 visual previews, pick by seeing not describing.
-- **Animation-Rich** — Staggered reveals, scale transitions, blur effects, background patterns.
-- **Inline Editing** — Hover top-left corner or press E to edit text directly in the browser.
-- **PPT Conversion** — Convert PowerPoint files to HTML with style selection.
-- **Distinctive Design** — 12 curated style presets, no generic "AI slop" aesthetics.
+- **零依赖** — 单一 HTML 文件，CSS/JS 全部内联。无需 npm 或构建工具。
+- **固定 16:9 舞台** — 1920×1080 幻灯片画布，整体缩放适配任意视口。移动端不重排。
+- **样式发现** — 生成 3 个视觉预览，所见即所选，而非凭空描述。
+- **动画丰富** — 交错渐显、缩放过渡、模糊效果、背景纹理等。
+- **行内编辑** — 鼠标悬停左上角或按 E 键，直接在浏览器中编辑文本。
+- **PPT 转换** — 将 PowerPoint 文件转换为 HTML，支持样式选择。
+- **独特设计** — 12 套精选风格预设，拒绝千篇一律的"AI 稀烂美学"。
 
-## Quick Start
+## 快速开始
 
-This project is structured as a **WorkBuddy Skill**. The skill definition lives in `.workbuddy/skills/html-slides/`.
+本项目以 **WorkBuddy Skill** 形式组织，技能定义位于 `.workbuddy/skills/html-slides/`。
 
-To use with WorkBuddy, the skill is automatically available when working in this project directory.
+在 WorkBuddy 中使用时，进入本项目目录即可自动激活技能。
 
-## Skill Structure
+## 技能结构
 
 ```
 .workbuddy/skills/html-slides/
-├── SKILL.md                      # Main workflow (progressive disclosure)
+├── SKILL.md                      # 主工作流程（渐进式披露）
 ├── references/
-│   ├── viewport-base.css         # Mandatory fixed-stage CSS
-│   ├── html-template.md          # HTML architecture & JS features
-│   ├── animation-patterns.md     # Animation reference & feeling guide
-│   └── style-presets.md          # 12 curated visual style definitions
+│   ├── viewport-base.css         # 强制性固定舞台 CSS
+│   ├── html-template.md          # HTML 架构与 JS 功能
+│   ├── animation-patterns.md     # 动画参考与效果-感觉对照
+│   └── style-presets.md          # 12 套精选视觉风格定义
 ├── scripts/
-│   └── extract-pptx.py           # PPT content extraction script
-└── assets/                       # (Templates and assets, to be added)
+│   └── extract-pptx.py           # PPT 内容提取脚本
+└── assets/                       # （模板与素材，后续添加）
 ```
 
-## Style Presets
+## 风格预设
 
-| # | Name | Vibe | Theme |
-|---|------|------|-------|
-| 1 | Bold Signal | Confident, high-impact | Dark |
-| 2 | Electric Studio | Clean, professional | Dark |
-| 3 | Creative Voltage | Energetic, retro-modern | Dark |
-| 4 | Dark Botanical | Elegant, premium | Dark |
-| 5 | Notebook Tabs | Editorial, tactile | Light |
-| 6 | Pastel Geometry | Friendly, approachable | Light |
-| 7 | Split Pastel | Playful, creative | Light |
-| 8 | Vintage Editorial | Witty, personality-driven | Light |
-| 9 | Neon Cyber | Futuristic, techy | Specialty |
-| 10 | Terminal Green | Developer, hacker | Specialty |
-| 11 | Swiss Modern | Clean, Bauhaus | Specialty |
-| 12 | Paper & Ink | Literary, thoughtful | Specialty |
+| # | 名称 | 氛围 | 主题 |
+|---|------|------|------|
+| 1 | Bold Signal | 自信、高冲击力 | 深色 |
+| 2 | Electric Studio | 干净、专业 | 深色 |
+| 3 | Creative Voltage | 充满活力、复古现代 | 深色 |
+| 4 | Dark Botanical | 优雅、精致 | 深色 |
+| 5 | Notebook Tabs | 编辑感、触感 | 浅色 |
+| 6 | Pastel Geometry | 友好、亲和 | 浅色 |
+| 7 | Split Pastel | 俏皮、创意 | 浅色 |
+| 8 | Vintage Editorial | 诙谐、个性鲜明 | 浅色 |
+| 9 | Neon Cyber | 未来感、科技感 | 特色 |
+| 10 | Terminal Green | 开发者、黑客美学 | 特色 |
+| 11 | Swiss Modern | 精致、包豪斯 | 特色 |
+| 12 | Paper & Ink | 文艺、沉思 | 特色 |
 
-## Technical Constraints
+## 技术约束
 
-- Slide canvas: fixed 1920×1080, scaled via JS transform
-- Visibility control: `.active`/`.visible` classes (never `display: none/block`)
-- CSS function negation: `calc(-1 * clamp(...))` (never `-clamp()`)
-- Fonts: Google Fonts or Fontshare only (never system fonts)
-- `prefers-reduced-motion` support required
-- No scrolling, overflow, or overlapping panels inside slides
+- 幻灯片画布：固定 1920×1080，通过 JS transform 缩放
+- 可见性控制：`.active`/`.visible` 类（绝不使用 `display: none/block`）
+- CSS 函数取负：`calc(-1 * clamp(...))`（不可直接写 `-clamp()`）
+- 字体：仅使用 Google Fonts 或 Fontshare（不使用系统字体）
+- 必须支持 `prefers-reduced-motion`
+- 幻灯片内部不允许滚动、溢出或面板重叠
 
-## Workflow
+## 工作流程
 
-1. **Phase 0** — Detect mode (new / PPT conversion / enhancement)
-2. **Phase 1** — Content discovery (purpose, length, density, content)
-3. **Phase 2** — Style discovery (3 visual previews, pick one)
-4. **Phase 3** — Generate presentation (single HTML file)
-4. **Phase 4** — PPT conversion (optional)
-5. **Phase 5** — Delivery & preview
-6. **Phase 6** — Share & export (CloudStudio deploy / PDF export)
+1. **阶段 0** — 模式检测（新建 / PPT 转换 / 增强）
+2. **阶段 1** — 内容发现（用途、篇幅、密度、素材）
+3. **阶段 2** — 样式发现（3 个视觉预览，选择其一）
+4. **阶段 3** — 生成演示文稿（单一 HTML 文件）
+5. **阶段 4** — PPT 转换（可选）
+6. **阶段 5** — 交付与预览
+7. **阶段 6** — 分享与导出（CloudStudio 部署 / PDF 导出）
 
-## Status
+## 当前状态
 
-**Framework established.** Style presets and detailed design rules will be refined based on user preference discussions.
+**框架已建立。** 风格预设与详细设计规则将在后续沟通中细化。
 
-## License
+## 许可证
 
 MIT
