@@ -14,11 +14,80 @@
 - **PPT 转换** — 将 PowerPoint 文件转换为 HTML，支持样式选择。
 - **独特设计** — 10 套当代国际化风格预设，拒绝千篇一律的"AI 稀烂美学"。
 
-## 快速开始
+## 安装
 
-本项目以 **WorkBuddy Skill** 形式组织，技能定义位于 `.workbuddy/skills/html-slides/`。
+### 方式一：作为项目 Skill 使用（推荐）
 
-在 WorkBuddy 中使用时，进入本项目目录即可自动激活技能。
+将本仓库克隆到本地，在 WorkBuddy 中打开该项目目录即可自动激活 Skill：
+
+```bash
+git clone https://github.com/vividvictor/html-slides.git
+cd html-slides
+# 在 WorkBuddy 中打开此目录，技能自动激活
+```
+
+### 方式二：作为全局 Skill 使用
+
+将 Skill 目录复制到用户级 Skill 目录，即可在任意项目中使用：
+
+```bash
+# 复制到全局 Skill 目录
+cp -r .workbuddy/skills/html-slides ~/.workbuddy/skills/html-slides
+```
+
+> Windows 用户路径为 `C:\Users\<你的用户名>\.workbuddy\skills\html-slides`
+
+### 方式三：从 WorkBuddy Skill 市场安装（即将支持）
+
+未来可通过 WorkBuddy Skill 市场一键安装，无需手动操作。
+
+## 使用
+
+在 WorkBuddy 对话中，使用以下触发词即可激活 Skill：
+
+| 触发词示例 | 模式 |
+|-----------|------|
+| "做一份演示文稿"、"帮我做 slides"、"create slides" | **新建演示文稿** |
+| "把这个 PPT 转成 HTML"、"convert this pptx" | **PPT 转换** |
+| "增强这份演示文稿"、"修改这个 HTML deck" | **增强现有文稿** |
+
+### 新建演示文稿流程
+
+```
+1️⃣ 你说需求 → "帮我做一份创业路演的演示文稿，10页左右"
+2️⃣ Skill 提问 → 用途？篇幅？内容？密度？（一次问完）
+3️⃣ 样式预览 → 生成 3 张风格预览图，你选一个或混搭
+4️⃣ 生成文稿 → 输出单一 HTML 文件，浏览器打开即可演示
+5️⃣ 交付预览 → WorkBuddy 中直接预览，支持行内编辑
+6️⃣ 分享导出 → 可部署为在线 URL 或导出 PDF
+```
+
+### PPT 转换流程
+
+```
+1️⃣ 你提供文件 → 上传 .pptx 文件或提供路径
+2️⃣ 内容提取 → 自动提取幻灯片标题、内容、图片
+3️⃣ 样式预览 → 同上，生成 3 张风格预览
+4️⃣ 生成 HTML → 保留原内容结构，赋予全新视觉风格
+```
+
+### 行内编辑
+
+生成后的演示文稿支持行内编辑：
+
+- **鼠标**：悬停左上角热区，进入编辑模式
+- **键盘**：按 `E` 键切换编辑模式
+- 直接点击文本即可修改，修改后自动保存到 HTML 文件
+
+### 导航控制
+
+| 操作 | 控制 |
+|------|------|
+| 下一页 | `→` / `Space` / 滑动 |
+| 上一页 | `←` / 滑动 |
+| 第一页 | `Home` |
+| 最后一页 | `End` |
+| 全屏 | `F` 键 |
 
 ## 技能结构
 
