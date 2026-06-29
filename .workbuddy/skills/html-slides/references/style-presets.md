@@ -426,6 +426,102 @@
 
 ---
 
+## 11. 芭乐 Guava
+
+**氛围：** 温暖、亲切、手绘——像翻开一本带着果香的私人笔记本
+
+**布局：** 柔粉色底板，手绘风格的波浪线和有机形状装饰。内容随性排列，像写在笔记本上的涂鸦。
+
+**设计灵感：** 手绘笔记 × 当代温暖品牌。参考：子弹笔记（Bullet Journal）美学、Kikki.K、 Papier 等手写文具品牌、儿童绘本的温暖感。
+
+**Typography:**
+- Display: `Caveat` (700) — 手写感展示字体，温暖亲切
+- Body: `Nunito` (400/600) — 圆润柔和，与手写标题完美搭配
+
+**Font CDN:**
+```html
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+```
+
+**Colors:**
+```css
+:root {
+    --bg-primary: #fef5f0;      /* 芭乐粉白——果肉色 */
+    --bg-secondary: #fce8e0;
+    --bg-warm: #faf0e8;
+    --text-primary: #3d2b1f;    /* 深棕——果核色 */
+    --text-secondary: #7a5c4a;
+    --accent-pink: #ff8fa3;     /* 芭乐肉粉——核心色 */
+    --accent-pink-light: #ffd4db;
+    --accent-green: #5a8a6a;   /* 芭乐皮绿——对比色 */
+    --accent-green-light: #d4e8d8;
+    --accent-seed: #f0d4a0;    /* 芭乐籽黄——点缀 */
+    --hand-drawn: #5a4030;     /* 手绘线色——铅笔棕 */
+    --wavy-opacity: 0.12;      /* 波浪装饰透明度 */
+    --stage-bg: #fef5f0;
+    --slide-bg: #fef5f0;
+}
+```
+
+**Signature Elements:**
+- 手绘波浪线装饰（border-image 或 SVG 内联），非几何直线
+- 有机圆形/椭圆装饰（芭乐切片形状隐喻）
+- 芭乐粉色大面积使用（标题背景、卡片、标注）
+- 芭乐皮绿作为对比点缀（小标签、图标、进度条）
+- 柔和圆角（border-radius: 20-24px），绝不尖锐
+- Nunito 圆润字体 + Caveat 手写标题，温暖对比
+- 轻松跳跃的动画节奏（0.4-0.5s，带弹性 bounce）
+
+---
+
+## 12. 玄金 Obsidian
+
+**氛围：** 冷静沉着、庄严内敛——中国漆器与宣纸的千年对话
+
+**布局：** 碳黑底板，金漆色细线与点缀。竖线或竖排装饰元素。内容居中或对称排列，庄重克制。
+
+**设计灵感：** 中国传统漆器美学 × 当代东方极简。参考：中国漆器（黑漆描金）、故宫博物院品牌、日本能乐舞台美学、北京故宫出版社。
+
+**Typography:**
+- Display: `Noto Serif SC` (700/900) — 中国传统宋体，庄重典雅
+- Accent: `Ma Shan Zheng` (400) — 毛笔行楷，用于签名式装饰文字
+- Body: `Noto Sans SC` (400/500) — 简洁中文黑体，高可读性
+
+**Font CDN:**
+```html
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700;900&family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+```
+
+**Colors:**
+```css
+:root {
+    --bg-primary: #0d0d0d;      /* 碳黑——漆器底色 */
+    --bg-gradient: linear-gradient(135deg, #0d0d0d 0%, #1a1510 50%, #0d0d0d 100%);
+    --text-primary: #f5efe6;    /* 暖白——宣纸色 */
+    --text-secondary: #8a7e6a;  /* 暗金灰 */
+    --accent-gold: #c49b3a;     /* 金漆——传统中国金，琥珀暖调 */
+    --accent-gold-light: #e8d4b0;
+    --accent-gold-glow: rgba(196,155,58,0.15);
+    --accent-red: #8b2500;      /* 暗朱红——传统中国红，克制不张扬 */
+    --accent-red-light: rgba(139,37,0,0.08);
+    --border-gold: rgba(196,155,58,0.3);
+    --pattern-opacity: 0.04;   /* 回纹/云纹暗纹透明度 */
+    --stage-bg: #000;
+    --slide-bg: #0d0d0d;
+}
+```
+
+**Signature Elements:**
+- 金漆色细线（1-2px）作为竖分割线或边框——致敬漆器描金
+- 毛笔行楷（Ma Shan Zheng）用于章节标题或签名式装饰短语
+- 低透明度回纹/云纹暗纹背景（CSS 重复 pattern 或 SVG 内联）
+- 竖排文字装饰（writing-mode: vertical-rl）用于页边签名或页码
+- 暗朱红仅用于极少量强调（一个词、一个数字），绝不大面积
+- 宋体标题 + 简洁黑体正文，传统与现代的对话
+- 极慢克制动画（0.8-1.2s），如卷轴缓缓展开
+
+---
+
 ## 字体配对速查
 
 | 预设 | 展示字体 | 正文字体 | 来源 |
@@ -440,6 +536,8 @@
 | 纸墨 Ink Paper | Cormorant Garamond | IBM Plex Sans | Google |
 | 电光 Volt | Clash Display | Satoshi | Fontshare |
 | 砂岩 Sandstone | Fraunces | Work Sans | Google |
+| 芭乐 Guava | Caveat | Nunito | Google |
+| 玄金 Obsidian | Noto Serif SC + Ma Shan Zheng | Noto Sans SC | Google |
 
 ---
 

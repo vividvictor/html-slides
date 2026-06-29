@@ -1,0 +1,68 @@
+<svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700;900&amp;family=Noto+Sans+SC:wght@400&amp;family=Ma+Shan+Zheng');
+      .title-serif { font-family: 'Noto Serif SC', serif; font-weight: 900; fill: #f5efe6; }
+      .body-sans { font-family: 'Noto Sans SC', sans-serif; fill: #8a7e6a; }
+      .brush { font-family: 'Ma Shan Zheng', cursive; fill: #c49b3a; }
+      .gold-accent { font-family: 'Noto Serif SC', serif; font-weight: 700; fill: #c49b3a; }
+    </style>
+    <!-- 回纹暗纹 pattern -->
+    <pattern id="huiwen" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <rect width="40" height="40" fill="none"/>
+      <path d="M10,10 h8 v8 h-8 z M22,10 h8 v8 h-8 z M10,22 h8 v8 h-8 z M22,22 h8 v8 h-8 z" fill="#c49b3a" opacity="0.04"/>
+    </pattern>
+    <!-- 云纹 pattern -->
+    <pattern id="yunwen" x="0" y="0" width="80" height="40" patternUnits="userSpaceOnUse">
+      <path d="M20,20 Q30,10 40,20 Q50,30 60,20" stroke="#c49b3a" stroke-width="0.5" fill="none" opacity="0.06"/>
+    </pattern>
+  </defs>
+  <!-- 背景：碳黑 -->
+  <rect width="480" height="270" fill="#0d0d0d"/>
+  <!-- 暗纹渐变 -->
+  <rect width="480" height="270" fill="#1a1510" opacity="0.3"/>
+  <!-- 回纹暗纹 -->
+  <rect width="480" height="270" fill="url(#huiwen)"/>
+
+  <!-- 金漆竖线（左）—— 漆器描金 -->
+  <line x1="30" y1="0" x2="30" y2="270" stroke="#c49b3a" stroke-width="1.5" opacity="0.4"/>
+  <line x1="34" y1="0" x2="34" y2="270" stroke="#c49b3a" stroke-width="0.5" opacity="0.2"/>
+
+  <!-- 金漆竖线（右） -->
+  <line x1="450" y1="0" x2="450" y2="270" stroke="#c49b3a" stroke-width="1" opacity="0.3"/>
+
+  <!-- 竖排签名文字（右边缘）—— 毛笔行楷 -->
+  <text x="455" y="50" class="brush" font-size="16" writing-mode="vertical-rl">漆器千年</text>
+
+  <!-- 金漆横线（底） -->
+  <line x1="50" y1="250" x2="430" y2="250" stroke="#c49b3a" stroke-width="0.8" opacity="0.3"/>
+
+  <!-- 主标题——宋体 -->
+  <text x="60" y="100" class="title-serif" font-size="36">冷静 · 沉着</text>
+
+  <!-- 金漆副标题 -->
+  <text x="60" y="135" class="gold-accent" font-size="16">碳黑与金漆的千年对话</text>
+
+  <!-- 说明文字 -->
+  <text x="60" y="165" class="body-sans" font-size="12" opacity="0.8">中国漆器美学 × 当代东方极简</text>
+
+  <!-- 金漆装饰框（右下） -->
+  <rect x="280" y="155" width="150" height="80" rx="0" fill="none" stroke="#c49b3a" stroke-width="1" opacity="0.4"/>
+  <line x1="280" y1="155" x2="290" y2="145" stroke="#c49b3a" stroke-width="0.8" opacity="0.3"/>
+  <line x1="430" y1="155" x2="440" y2="145" stroke="#c49b3a" stroke-width="0.8" opacity="0.3"/>
+  <!-- 框内内容 -->
+  <text x="295" y="180" class="body-sans" font-size="10" opacity="0.7">金漆描金 · 暗朱红点缀</text>
+  <text x="295" y="200" class="body-sans" font-size="10" opacity="0.7">回纹暗纹 · 竖排签名</text>
+  <!-- 暗朱红小圆点 -->
+  <circle cx="295" cy="218" r="4" fill="#8b2500" opacity="0.6"/>
+
+  <!-- 毛笔行楷装饰短语（左侧金线旁） -->
+  <text x="42" y="180" class="brush" font-size="14" writing-mode="vertical-rl" opacity="0.5">玄金</text>
+
+  <!-- 金漆菱形暗纹（左下） -->
+  <path d="M80,220 l15,-15 l15,15 l-15,15 z" fill="none" stroke="#c49b3a" stroke-width="0.8" opacity="0.2"/>
+  <path d="M110,220 l15,-15 l15,15 l-15,15 z" fill="none" stroke="#c49b3a" stroke-width="0.5" opacity="0.15"/>
+
+  <!-- 云纹暗纹叠加 -->
+  <rect x="60" y="50" width="200" height="60" fill="url(#yunwen)" opacity="0.5"/>
+</svg>

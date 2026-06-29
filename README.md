@@ -12,7 +12,7 @@
 - **动画丰富** — 交错渐显、缩放过渡、模糊效果、背景纹理等。
 - **行内编辑** — 鼠标悬停左上角或按 E 键，直接在浏览器中编辑文本。
 - **PPT 转换** — 将 PowerPoint 文件转换为 HTML，支持样式选择。
-- **独特设计** — 10 套当代国际化风格预设，拒绝千篇一律的"AI 稀烂美学"。
+- **独特设计** — 12 套当代国际化风格预设，拒绝千篇一律的"AI 稀烂美学"。
 
 ## 安装
 
@@ -98,7 +98,7 @@ cp -r .workbuddy/skills/html-slides ~/.workbuddy/skills/html-slides
 │   ├── viewport-base.css         # 强制性固定舞台 CSS
 │   ├── html-template.md          # HTML 架构与 JS 功能
 │   ├── animation-patterns.md     # 动画参考与效果-感觉对照
-│   └── style-presets.md          # 10 套当代国际化视觉风格定义
+│   └── style-presets.md          # 12 套当代国际化视觉风格定义
 ├── scripts/
 │   └── extract-pptx.py           # PPT 内容提取脚本
 └── assets/                       # （模板与素材，后续添加）
@@ -118,6 +118,8 @@ cp -r .workbuddy/skills/html-slides ~/.workbuddy/skills/html-slides
 | 8 | 纸墨 Ink Paper | 编辑感、沉思 | 浅色 |
 | 9 | 电光 Volt | 快节奏、创业路演 | 深色 |
 | 10 | 砂岩 Sandstone | 温暖、生活方式 | 浅色 |
+| 11 | 芭乐 Guava | 温暖、手绘、亲切 | 浅色 |
+| 12 | 玄金 Obsidian | 冷静沉着、中国漆器 | 深色 |
 
 ## Template Gallery
 
@@ -212,6 +214,24 @@ cp -r .workbuddy/skills/html-slides ~/.workbuddy/skills/html-slides
 
 </td>
 </tr>
+<tr>
+<td width="50%">
+
+### 11. 芭乐 Guava
+<img src="gallery/guava.svg" width="100%" alt="芭乐 Guava 风格预览">
+
+温暖、手绘、亲切。芭乐粉+皮绿，手绘波浪线，圆润字体，私人笔记本美学。
+
+</td>
+<td width="50%">
+
+### 12. 玄金 Obsidian
+<img src="gallery/obsidian.svg" width="100%" alt="玄金 Obsidian 风格预览">
+
+冷静沉着、中国漆器。碳黑+金漆描金，回纹暗纹，竖排签名，毛笔行楷装饰，千年对话。
+
+</td>
+</tr>
 </table>
 
 ## 技术约束
@@ -235,7 +255,7 @@ cp -r .workbuddy/skills/html-slides ~/.workbuddy/skills/html-slides
 
 ## 当前状态
 
-**框架已建立，10 套当代国际化风格预设已定义。** 设计细节可按需求进一步调整。
+**框架已建立，12 套当代国际化风格预设已定义。** 设计细节可按需求进一步调整。
 
 ## 许可证
 
