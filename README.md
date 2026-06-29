@@ -12,7 +12,7 @@
 - **动画丰富** — 交错渐显、缩放过渡、模糊效果、背景纹理等。
 - **行内编辑** — 鼠标悬停左上角或按 E 键，直接在浏览器中编辑文本。
 - **PPT 转换** — 将 PowerPoint 文件转换为 HTML，支持样式选择。
-- **独特设计** — 12 套精选风格预设，拒绝千篇一律的"AI 稀烂美学"。
+- **独特设计** — 10 套当代国际化风格预设，拒绝千篇一律的"AI 稀烂美学"。
 
 ## 快速开始
 
@@ -29,7 +29,7 @@
 │   ├── viewport-base.css         # 强制性固定舞台 CSS
 │   ├── html-template.md          # HTML 架构与 JS 功能
 │   ├── animation-patterns.md     # 动画参考与效果-感觉对照
-│   └── style-presets.md          # 12 套精选视觉风格定义
+│   └── style-presets.md          # 10 套当代国际化视觉风格定义
 ├── scripts/
 │   └── extract-pptx.py           # PPT 内容提取脚本
 └── assets/                       # （模板与素材，后续添加）
@@ -39,18 +39,16 @@
 
 | # | 名称 | 氛围 | 主题 |
 |---|------|------|------|
-| 1 | Bold Signal | 自信、高冲击力 | 深色 |
-| 2 | Electric Studio | 干净、专业 | 深色 |
-| 3 | Creative Voltage | 充满活力、复古现代 | 深色 |
-| 4 | Dark Botanical | 优雅、精致 | 深色 |
-| 5 | Notebook Tabs | 编辑感、触感 | 浅色 |
-| 6 | Pastel Geometry | 友好、亲和 | 浅色 |
-| 7 | Split Pastel | 俏皮、创意 | 浅色 |
-| 8 | Vintage Editorial | 诙谐、个性鲜明 | 浅色 |
-| 9 | Neon Cyber | 未来感、科技感 | 特色 |
-| 10 | Terminal Green | 开发者、黑客美学 | 特色 |
-| 11 | Swiss Modern | 精致、包豪斯 | 特色 |
-| 12 | Paper & Ink | 文艺、沉思 | 特色 |
+| 1 | 建筑 Architect | 精准、克制、国际理性 | 浅色 |
+| 2 | 熔岩 Lava | 电影感、沉稳叙事 | 深色 |
+| 3 | 极光 Aurora | 流动、科技前沿 | 深色 |
+| 4 | 赤金 Aureate | 奢华、权威、金融 | 深色 |
+| 5 | 雾林 Mist Grove | 自然、可持续 | 深色 |
+| 6 | 冰川 Glacier | 极简、纯净、可信 | 浅色 |
+| 7 | 混凝土 Concrete | 粗犷、Neo-Brutalism | 浅色 |
+| 8 | 纸墨 Ink Paper | 编辑感、沉思 | 浅色 |
+| 9 | 电光 Volt | 快节奏、创业路演 | 深色 |
+| 10 | 砂岩 Sandstone | 温暖、生活方式 | 浅色 |
 
 ## 技术约束
 
@@ -73,7 +71,7 @@
 
 ## 当前状态
 
-**框架已建立。** 风格预设与详细设计规则将在后续沟通中细化。
+**框架已建立，10 套当代国际化风格预设已定义。** 设计细节可按需求进一步调整。
 
 ## 许可证
 
