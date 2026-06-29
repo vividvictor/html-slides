@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="100%">
+  <rect width="960" height="540" fill="#f5efe6"/>
+  <circle cx="820" cy="120" r="60" fill="none" stroke="#c4654a" stroke-width="2" opacity="0.3"/>
+  <line x1="820" y1="180" x2="820" y2="300" stroke="#c4654a" stroke-width="2" opacity="0.3"/>
+  <circle cx="820" cy="310" r="4" fill="#c4654a" opacity="0.4"/>
+  <text x="80" y="140" font-family="Georgia, serif" font-size="72" font-weight="900" fill="#2d1f14">Sandstone</text>
+  <text x="80" y="175" font-family="Arial, sans-serif" font-size="24" font-weight="400" fill="#6b5344">Warm. Natural. Mediterranean lifestyle.</text>
+  <rect x="80" y="200" width="180" height="3" fill="#c4654a" rx="1.5"/>
+  <rect x="80" y="240" width="380" height="160" fill="#f5efe6" stroke="#d4b896" stroke-width="1" rx="16"/>
+  <text x="100" y="280" font-family="Georgia, serif" font-size="20" font-weight="700" fill="#c4654a">Terracotta + Olive</text>
+  <text x="100" y="310" font-family="Arial, sans-serif" font-size="14" font-weight="400" fill="#6b5344">Warm sand backgrounds. Rounded cards.</text>
+  <text x="100" y="335" font-family="Arial, sans-serif" font-size="14" font-weight="400" fill="#6b5344">Geometric accents. Slow elegant motion.</text>
+  <text x="100" y="360" font-family="Arial, sans-serif" font-size="14" font-weight="400" fill="#6b5344">Fraunces serif. Work Sans body.</text>
+  <rect x="100" y="380" width="24" height="24" fill="#c4654a" rx="4" opacity="0.8"/>
+  <rect x="132" y="380" width="24" height="24" fill="#d4b896" rx="4" opacity="0.8"/>
+  <rect x="164" y="380" width="24" height="24" fill="#7a8a5a" rx="4" opacity="0.8"/>
+  <rect x="196" y="380" width="24" height="24" fill="#f5efe6" rx="4" stroke="#d4b896" stroke-width="1"/>
+  <text x="880" y="460" font-family="Arial, sans-serif" font-size="12" font-weight="400" fill="#6b5344" text-anchor="end">Fraunces + Work Sans</text>
+</svg>

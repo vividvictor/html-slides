@@ -50,6 +50,101 @@
 | 9 | 电光 Volt | 快节奏、创业路演 | 深色 |
 | 10 | 砂岩 Sandstone | 温暖、生活方式 | 浅色 |
 
+## Template Gallery
+
+<table>
+<tr>
+<td width="50%">
+
+### 1. 建筑 Architect
+<img src="gallery/architect.svg" width="100%" alt="建筑 Architect 风格预览">
+
+精准、克制、国际理性。网格可见，红线点缀，不对称留白。
+
+</td>
+<td width="50%">
+
+### 2. 熔岩 Lava
+<img src="gallery/lava.svg" width="100%" alt="熔岩 Lava 风格预览">
+
+电影感、沉稳叙事。暗底暖光渐变，Netflix 纪录片美学。
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### 3. 极光 Aurora
+<img src="gallery/aurora.svg" width="100%" alt="极光 Aurora 风格预览">
+
+流动、科技前沿。Mesh gradient 流动色彩，Stripe × Linear 视觉。
+
+</td>
+<td width="50%">
+
+### 4. 赤金 Aureate
+<img src="gallery/aureate.svg" width="100%" alt="赤金 Aureate 风格预览">
+
+奢华、权威、金融。深蓝+金线，衬线标题，投行路演视觉。
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### 5. 雾林 Mist Grove
+<img src="gallery/mist-grove.svg" width="100%" alt="雾林 Mist Grove 风格预览">
+
+自然、可持续。深林底板+暖光斑，Biophilic 设计语言。
+
+</td>
+<td width="50%">
+
+### 6. 冰川 Glacier
+<img src="gallery/glacier.svg" width="100%" alt="冰川 Glacier 风格预览">
+
+极简、纯净、可信。冰蓝细线，Nordic 极简，无阴影无渐变。
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### 7. 混凝土 Concrete
+<img src="gallery/concrete.svg" width="100%" alt="混凝土 Concrete 风格预览">
+
+粗犷、Neo-Brutalism。4px 粗边框+硬阴影，饱和色块拼接。
+
+</td>
+<td width="50%">
+
+### 8. 纸墨 Ink Paper
+<img src="gallery/ink-paper.svg" width="100%" alt="纸墨 Ink Paper 风格预览">
+
+编辑感、沉思。暖米底板+墨红标注+drop cap，文字至上。
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### 9. 电光 Volt
+<img src="gallery/volt.svg" width="100%" alt="电光 Volt 风格预览">
+
+快节奏、创业路演。电光青+热粉红双强调，高对比高能量。
+
+</td>
+<td width="50%">
+
+### 10. 砂岩 Sandstone
+<img src="gallery/sandstone.svg" width="100%" alt="砂岩 Sandstone 风格预览">
+
+温暖、生活方式。赤陶+橄榄，圆角卡片，地中海阳光叙事。
+
+</td>
+</tr>
+</table>
+
 ## 技术约束
 
 - 幻灯片画布：固定 1920×1080，通过 JS transform 缩放

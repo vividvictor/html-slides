@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="100%">
+  <rect width="960" height="540" fill="#f0f0f0"/>
+  <rect x="60" y="60" width="280" height="420" fill="#ff3366" stroke="#1a1a1a" stroke-width="4"/>
+  <rect x="60" y="60" width="280" height="420" fill="#ff3366" stroke="#1a1a1a" stroke-width="4" style="filter: drop-shadow(4px 4px 0 #1a1a1a)"/>
+  <text x="80" y="120" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#f0f0f0">CONCRETE</text>
+  <text x="80" y="160" font-family="monospace" font-size="16" font-weight="700" fill="#f0f0f0">Neo-Brutalism</text>
+  <text x="80" y="200" font-family="Arial, sans-serif" font-size="14" font-weight="400" fill="#f0f0f0">Berlin design studio</text>
+  <text x="80" y="225" font-family="Arial, sans-serif" font-size="14" font-weight="400" fill="#f0f0f0">Bold borders. Hard shadow.</text>
+  <text x="80" y="250" font-family="Arial, sans-serif" font-size="14" font-weight="400" fill="#f0f0f0">No compromise.</text>
+  <rect x="380" y="80" width="200" height="80" fill="#00cc88" stroke="#1a1a1a" stroke-width="4" style="filter: drop-shadow(4px 4px 0 #1a1a1a)"/>
+  <text x="400" y="130" font-family="monospace" font-size="20" font-weight="700" fill="#1a1a1a">`DATA`</text>
+  <rect x="380" y="180" width="200" height="80" fill="#ffcc00" stroke="#1a1a1a" stroke-width="4" style="filter: drop-shadow(4px 4px 0 #1a1a1a)"/>
+  <text x="400" y="230" font-family="monospace" font-size="20" font-weight="700" fill="#1a1a1a">`CODE`</text>
+  <rect x="380" y="280" width="200" height="80" fill="#f0f0f0" stroke="#1a1a1a" stroke-width="4" style="filter: drop-shadow(4px 4px 0 #1a1a1a)"/>
+  <text x="400" y="330" font-family="monospace" font-size="20" font-weight="700" fill="#1a1a1a">`RULE`</text>
+  <rect x="620" y="80" width="280" height="420" fill="#1a1a1a"/>
+  <text x="640" y="140" font-family="Arial, sans-serif" font-size="48" font-weight="700" fill="#ff3366">RAW.</text>
+  <text x="640" y="190" font-family="Arial, sans-serif" font-size="48" font-weight="700" fill="#00cc88">BOLD.</text>
+  <text x="640" y="240" font-family="Arial, sans-serif" font-size="48" font-weight="700" fill="#ffcc00">REAL.</text>
+  <line x1="640" y1="280" x2="880" y2="280" stroke="#f0f0f0" stroke-width="2"/>
+  <text x="640" y="310" font-family="monospace" font-size="14" font-weight="400" fill="#f0f0f0">Space Grotesk + Space Mono</text>
+  <text x="640" y="340" font-family="monospace" font-size="14" font-weight="400" fill="#f0f0f0">4px borders. 4px hard shadow.</text>
+  <text x="640" y="370" font-family="monospace" font-size="14" font-weight="400" fill="#f0f0f0">border-radius: 0</text>
+</svg>

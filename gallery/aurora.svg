@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="100%">
+  <defs>
+    <radialGradient id="mesh1" cx="75%" cy="30%" r="55%">
+      <stop offset="0%" stop-color="#a855f7" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#a855f7" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="mesh2" cx="25%" cy="70%" r="50%">
+      <stop offset="0%" stop-color="#00ffc8" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#00ffc8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="mesh3" cx="50%" cy="20%" r="40%">
+      <stop offset="0%" stop-color="#f43f5e" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#f43f5e" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="960" height="540" fill="#0a0f1c"/>
+  <rect width="960" height="540" fill="url(#mesh1)"/>
+  <rect width="960" height="540" fill="url(#mesh2)"/>
+  <rect width="960" height="540" fill="url(#mesh3)"/>
+  <text x="80" y="140" font-family="Arial, sans-serif" font-size="88" font-weight="700" fill="#e8eaf0">AURORA</text>
+  <rect x="80" y="155" width="200" height="3" fill="#00ffc8" rx="1.5"/>
+  <text x="80" y="200" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#6b7280">Gradient mesh. Tech frontier.</text>
+  <text x="80" y="230" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#6b7280">Stripe × Linear × Vercel</text>
+  <rect x="80" y="260" width="32" height="32" fill="#00ffc8" rx="4" opacity="0.8"/>
+  <rect x="120" y="260" width="32" height="32" fill="#a855f7" rx="4" opacity="0.8"/>
+  <rect x="160" y="260" width="32" height="32" fill="#f43f5e" rx="4" opacity="0.8"/>
+  <text x="80" y="310" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#6b7280">Cyan. Violet. Rose. Three colors converge.</text>
+  <text x="880" y="460" font-family="Arial, sans-serif" font-size="12" font-weight="400" fill="#6b7280" text-anchor="end">Clash Display + Satoshi</text>
+  <rect x="600" y="80" width="280" height="380" fill="#0a0f1c" stroke="#00ffc8" stroke-width="1" opacity="0.3" rx="8"/>
+  <text x="620" y="120" font-family="Arial, sans-serif" font-size="18" font-weight="600" fill="#00ffc8">Quick. Fluid. Alive.</text>
+  <line x1="620" y1="140" x2="860" y2="140" stroke="#00ffc8" stroke-width="0.5" opacity="0.3"/>
+  <text x="620" y="170" font-family="Arial, sans-serif" font-size="14" font-weight="400" fill="#6b7280">Mesh gradient background</text>
+  <text x="620" y="195" font-family="Arial, sans-serif" font-size="14" font-weight="400" fill="#6b7280">Content offset from gradient</text>
+  <text x="620" y="220" font-family="Arial, sans-serif" font-size="14" font-weight="400" fill="#6b7280">Stagger reveal (0.15s gap)</text>
+</svg>

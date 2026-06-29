@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="100%">
+  <defs>
+    <linearGradient id="lava-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0d0d0d"/>
+      <stop offset="70%" stop-color="#1a1008"/>
+      <stop offset="100%" stop-color="#2d1a0a"/>
+    </linearGradient>
+    <radialGradient id="lava-glow" cx="50%" cy="100%" r="60%">
+      <stop offset="0%" stop-color="#ff6b35" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#ff6b35" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="960" height="540" fill="url(#lava-bg)"/>
+  <rect width="960" height="540" fill="url(#lava-glow)"/>
+  <line x1="480" y1="60" x2="480" y2="480" stroke="#8a8279" stroke-width="0.5" opacity="0.3"/>
+  <text x="120" y="160" font-family="Arial, sans-serif" font-size="72" font-weight="800" fill="#f0ece6">LAVA</text>
+  <rect x="120" y="175" width="180" height="4" fill="#ff6b35" rx="2"/>
+  <text x="120" y="220" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#8a8279">Cinematic storytelling</text>
+  <text x="120" y="250" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#8a8279">Netflix documentary aesthetic</text>
+  <text x="120" y="280" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#d4a574">Ember glow. Warm depths.</text>
+  <rect x="540" y="100" width="340" height="380" fill="#1a1008" stroke="#ff6b35" stroke-width="1" opacity="0.6" rx="4"/>
+  <text x="560" y="140" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#ff6b35">The Narrative</text>
+  <text x="560" y="170" font-family="Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8279">Every slide is a scene.</text>
+  <text x="560" y="195" font-family="Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8279">Dark canvas. Focused light.</text>
+  <line x1="560" y1="210" x2="840" y2="210" stroke="#d4a574" stroke-width="0.5" opacity="0.4"/>
+  <text x="560" y="240" font-family="Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8279">Slow fade-in (1-1.5s)</text>
+  <text x="560" y="260" font-family="Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8279">Cinematic rhythm</text>
+  <text x="860" y="460" font-family="Arial, sans-serif" font-size="12" font-weight="400" fill="#666" text-anchor="end">Syne + Space Grotesk</text>
+</svg>

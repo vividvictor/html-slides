@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="100%">
+  <rect width="960" height="540" fill="#faf8f3"/>
+  <line x1="80" y1="60" x2="880" y2="60" stroke="#d4d0c8" stroke-width="0.5"/>
+  <line x1="80" y1="480" x2="880" y2="480" stroke="#d4d0c8" stroke-width="0.5"/>
+  <text x="100" y="120" font-family="Georgia, serif" font-size="80" font-weight="700" fill="#c41e3a" opacity="0.9">I</text>
+  <text x="145" y="120" font-family="Georgia, serif" font-size="52" font-weight="700" fill="#1a1a1a">nk Paper</text>
+  <text x="100" y="175" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#555">Editorial. Thoughtful. Text-first.</text>
+  <line x1="100" y1="200" x2="400" y2="200" stroke="#d4d0c8" stroke-width="1"/>
+  <text x="100" y="240" font-family="Georgia, serif" font-size="28" font-style="italic" fill="#1a1a1a">"Good design is as little design as possible."</text>
+  <text x="100" y="270" font-family="Arial, sans-serif" font-size="14" font-weight="400" fill="#555">— Dieter Rams</text>
+  <line x1="100" y1="300" x2="880" y2="300" stroke="#d4d0c8" stroke-width="0.5"/>
+  <rect x="100" y="320" width="360" height="80" fill="#f8e8ec" rx="0" stroke="#c41e3a" stroke-width="0.5"/>
+  <text x="120" y="360" font-family="Georgia, serif" font-size="16" font-weight="600" fill="#c41e3a">Drop cap. Pull quote. Crimson accent.</text>
+  <rect x="80" y="420" width="24" height="24" fill="#c41e3a" rx="0" opacity="0.8"/>
+  <rect x="112" y="420" width="24" height="24" fill="#d4d0c8" rx="0" opacity="0.8"/>
+  <rect x="144" y="420" width="24" height="24" fill="#faf8f3" rx="0" stroke="#d4d0c8" stroke-width="1"/>
+  <text x="880" y="460" font-family="Arial, sans-serif" font-size="12" font-weight="400" fill="#555" text-anchor="end">Cormorant Garamond + IBM Plex Sans</text>
+</svg>

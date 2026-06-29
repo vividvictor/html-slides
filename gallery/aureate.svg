@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="100%">
+  <defs>
+    <linearGradient id="aureate-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a1628"/>
+      <stop offset="50%" stop-color="#132244"/>
+      <stop offset="100%" stop-color="#0a1628"/>
+    </linearGradient>
+    <pattern id="diamond" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M30 0 L60 30 L30 60 L0 30 Z" fill="none" stroke="#c9a96e" stroke-width="0.3" opacity="0.15"/>
+    </pattern>
+  </defs>
+  <rect width="960" height="540" fill="url(#aureate-bg)"/>
+  <rect width="960" height="540" fill="url(#diamond)"/>
+  <line x1="80" y1="60" x2="80" y2="480" stroke="#c9a96e" stroke-width="1" opacity="0.3"/>
+  <line x1="80" y1="60" x2="880" y2="60" stroke="#c9a96e" stroke-width="1" opacity="0.3"/>
+  <text x="120" y="160" font-family="Georgia, serif" font-size="80" font-weight="700" fill="#f5f0e8" letter-spacing="4">AUREATE</text>
+  <rect x="120" y="175" width="120" height="2" fill="#c9a96e"/>
+  <text x="120" y="220" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#8a9ab5">Luxury. Authority. International finance.</text>
+  <text x="120" y="250" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#8a9ab5">Gold line. Navy depth. Serif confidence.</text>
+  <rect x="560" y="100" width="320" height="380" fill="#0e1a30" stroke="#c9a96e" stroke-width="1" opacity="0.5" rx="2"/>
+  <line x1="580" y1="100" x2="580" y2="480" stroke="#c9a96e" stroke-width="1" opacity="0.5"/>
+  <text x="600" y="140" font-family="Georgia, serif" font-size="24" font-weight="700" fill="#c9a96e" letter-spacing="2">STRATEGY</text>
+  <text x="600" y="170" font-family="Arial, sans-serif" font-size="14" font-weight="400" fill="#8a9ab5">Q3 Revenue Growth</text>
+  <text x="600" y="200" font-family="Georgia, serif" font-size="42" font-weight="900" fill="#f5f0e8">+24.7%</text>
+  <line x1="600" y1="230" x2="860" y2="230" stroke="#c9a96e" stroke-width="0.5" opacity="0.3"/>
+  <text x="600" y="260" font-family="Arial, sans-serif" font-size="14" font-weight="400" fill="#8a9ab5">Playfair Display + Source Sans 3</text>
+</svg>
