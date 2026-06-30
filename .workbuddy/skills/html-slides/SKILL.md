@@ -117,6 +117,7 @@ Generate the full presentation using content from Phase 1 and style from Phase 2
 11. Every element with animation uses `.reveal` class pattern
 12. Support `prefers-reduced-motion`
 13. Apply density choice throughout: speaker-led → fewer ideas per slide; reading-first → more self-contained detail
+14. **NO style-specific classes in HTML content** — Decorations (gold lines, vertical signatures, brush decorations, wavy lines, etc.) must be implemented via CSS pseudo-elements (`::before`, `::after`) in the preset's Signature CSS (see `style-presets.md`). Never add style-specific divs/classes (e.g., `.gold-line-left`, `.vertical-sig`, `.brush-deco`) to the HTML content. This is CRITICAL for Style Transfer to work — the HTML must only use semantic classes from the system defined in `html-template.md`.
 
 **Content overflow guardrails:**
 - No scrolling, no overflow, no overlapping panels inside any slide
