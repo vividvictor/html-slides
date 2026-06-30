@@ -1,22 +1,17 @@
-# 风格预设参考
+# Style Presets — Complete `:root {}` Contracts
 
-为 HTML Slides 精选的视觉风格。每一套预设都源自当代国际设计趋势——拒绝千篇一律的"AI 稀烂美学"。**仅用抽象形状——不用插画。**
-
-**Viewport CSS：** 每份演示文稿必须包含 [viewport-base.css](viewport-base.css) 中的强制基础样式。
+Each preset defines the COMPLETE CSS variable contract.
+For style transfer, only the `:root {}` block and font `<link>` tags are replaced.
 
 ---
 
 ## 1. 建筑 Architect
 
-**氛围：** 精准、克制、国际、理性——如建筑蓝图般的秩序感
+**氛围：** Bauhaus × 瑞士国际主义 — 理性、网格、功能
 
-**布局：** 网格可见，不对称排列。大标题偏左或偏右，刻意留白。红线点缀。
-
-**设计灵感：** Bauhaus × 当代瑞士设计。参考：Dieter Rams、Lotta Nieminen、瑞士国际主义海报。
-
-**Typography:**
-- Display: `Archivo Black` (900) — 无衬线，厚重，工业感
-- Body: `Nunito Sans` (400/600) — 柔和圆润，与厚重标题形成对话
+**字体：**
+- Display: `Archivo Black` (400) — Google Fonts
+- Body: `Nunito Sans` (400/600) — Google Fonts
 
 **Font CDN:**
 ```html
@@ -26,79 +21,141 @@
 **Colors:**
 ```css
 :root {
-    --bg-primary: #ffffff;
-    --bg-secondary: #f5f5f5;
+    /* Identity */
+    --theme-name: 'Architect';
+    --theme-version: '1.0';
+
+    /* Background */
+    --bg-primary: #f8f8f8;
+    --bg-secondary: #eeeeee;
+    --bg-gradient: none;
+    --stage-bg: #f0f0f0;
+    --slide-bg: #f8f8f8;
+
+    /* Text */
     --text-primary: #1a1a1a;
-    --text-secondary: #666666;
-    --accent: #e63322;        /* 红线——建筑标注色 */
-    --accent-light: #fce4e4;
-    --grid-line: rgba(0,0,0,0.08);
-    --stage-bg: #ffffff;
-    --slide-bg: #ffffff;
+    --text-secondary: #555555;
+    --text-muted: #999999;
+
+    /* Accent */
+    --accent: #e63322;
+    --accent-secondary: #1a1a1a;
+    --accent-tertiary: #ffc400;
+    --accent-glow: rgba(230,51,34,0.1);
+    --accent-text: #ffffff;
+
+    /* Border & Divider */
+    --border-color: rgba(0,0,0,0.1);
+    --divider-color: rgba(0,0,0,0.08);
+    --shadow-color: rgba(0,0,0,0.08);
+
+    /* Special */
+    --quote-border: var(--accent);
+    --quote-bg: rgba(230,51,34,0.03);
+    --tag-bg: rgba(230,51,34,0.08);
+    --tag-text: var(--accent);
+
+    /* Typography */
+    --font-display: 'Archivo Black', sans-serif;
+    --font-body: 'Nunito Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --title-size: 96px;
+    --body-size: 28px;
+    --note-size: 18px;
+
+    /* Spacing */
+    --slide-padding: 80px;
+    --content-gap: 32px;
+    --col-gap: 64px;
+
+    /* Animation */
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --duration-normal: 0.6s;
 }
 ```
 
-**Signature Elements:**
-- 可见网格线（0.08 透明度），贯穿全页
-- 红色细线或红色数字标注（01 / 02 / 03）
-- 不对称布局——标题占 2/3，留白占 1/3
-- 刻意的空白区域，不做填充
-- 无圆角，纯直角
+**Signature CSS (pseudo-elements, style transfer safe):**
+```css
+/* Signature: red grid line at top */
+.slide::before {
+    content: '';
+    position: absolute;
+    top: 80px; left: 80px; right: 80px;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.3;
+    pointer-events: none;
+}
+```
 
 ---
 
 ## 2. 熔岩 Lava
 
-**氛围：** 电影感、沉稳、叙事性——像 Netflix 原创纪录片的开场
+**氛围：** Netflix 纪录片感 — 暗底暖光、电影叙事
 
-**布局：** 全幅深色背景，中心内容区。底部暖光渐变，如熔岩透出的光。
-
-**设计灵感：** 电影标题序列 × 深色品牌站。参考：Netflix、HBO、Apple TV+ 纪录片视觉。
-
-**Typography:**
-- Display: `Syne` (700/800) — 前卫无衬线，几何感强
-- Body: `Space Grotesk` (400/500) — 当代科技感
+**字体：**
+- Display: `Syne` (800) — Google Fonts
+- Body: `Space Grotesk` (400/700) — Google Fonts
 
 **Font CDN:**
 ```html
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
 ```
 
 **Colors:**
 ```css
 :root {
+    --theme-name: 'Lava';
+    --theme-version: '1.0';
     --bg-primary: #0d0d0d;
     --bg-gradient: linear-gradient(180deg, #0d0d0d 0%, #1a1008 70%, #2d1a0a 100%);
-    --text-primary: #f0ece6;
-    --text-secondary: #8a8279;
-    --accent: #ff6b35;         /* 熔岩橙 */
-    --accent-warm: #d4a574;    /* 暖光 */
-    --accent-glow: rgba(255,107,53,0.15);
     --stage-bg: #000;
     --slide-bg: #0d0d0d;
+    --text-primary: #f0ece6;
+    --text-secondary: #8a8279;
+    --text-muted: #5a5a5a;
+    --accent: #ff6b35;
+    --accent-secondary: #d4a574;
+    --accent-tertiary: #ff9f1a;
+    --accent-glow: rgba(255,107,53,0.15);
+    --accent-text: #000000;
+    --border-color: rgba(255,255,255,0.08);
+    --divider-color: rgba(255,107,53,0.15);
+    --shadow-color: rgba(255,107,53,0.2);
+    --quote-border: var(--accent);
+    --quote-bg: rgba(255,107,53,0.05);
+    --tag-bg: rgba(255,107,53,0.12);
+    --tag-text: var(--accent);
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'Space Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --title-size: 88px;
+    --body-size: 30px;
+    --note-size: 20px;
+    --slide-padding: 100px;
+    --content-gap: 40px;
+    --col-gap: 80px;
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --duration-normal: 0.7s;
 }
 ```
 
-**Signature Elements:**
-- 底部暖光渐变（从深色到暗橙）
-- 熔岩橙色的强调色块或文字高亮
-- 大面积留黑，中心聚焦
-- 极细的垂直分割线（1px，低透明度）
-- 缓慢 fade-in 动画（1-1.5s），营造电影节奏
+**Signature CSS:**
+```css
+/* Signature: warm glow gradient background (defined in --bg-gradient) */
+/* No additional pseudo-elements needed — gradient is in --bg-gradient */
+```
 
 ---
 
 ## 3. 极光 Aurora
 
-**氛围：** 流动、科技前沿、创意——如极光般的色彩流动
+**氛围：** Stripe/Linear 科技感 — mesh gradient 流动
 
-**布局：** 深色底板，mesh gradient 覆盖一角或边缘。内容偏向另一侧形成对比。
-
-**设计灵感：** Stripe、Linear、Vercel 等当代科技品牌的视觉语言。mesh gradient 是 2025+ 最主流的背景趋势。
-
-**Typography:**
-- Display: `Clash Display` (600/700) — Fontshare，当代几何无衬线
-- Body: `Satoshi` (400/500) — Fontshare，柔和功能型
+**字体：**
+- Display: `Clash Display` (600/700) — Fontshare
+- Body: `Satoshi` (400/500/700) — Fontshare
 
 **Font CDN:**
 ```html
@@ -108,40 +165,71 @@
 **Colors:**
 ```css
 :root {
+    --theme-name: 'Aurora';
+    --theme-version: '1.0';
     --bg-primary: #0a0f1c;
+    --bg-gradient: none;
+    --stage-bg: #000;
+    --slide-bg: #0a0f1c;
     --text-primary: #e8eaf0;
     --text-secondary: #6b7280;
+    --text-muted: #4b5563;
     --accent-cyan: #00ffc8;
     --accent-violet: #a855f7;
     --accent-rose: #f43f5e;
-    --mesh-1: rgba(168,85,247,0.25);   /* 紫色 mesh */
-    --mesh-2: rgba(0,255,200,0.15);    /* 青色 mesh */
-    --mesh-3: rgba(244,63,94,0.10);    /* 玫红 mesh */
-    --stage-bg: #000;
-    --slide-bg: #0a0f1c;
+    --accent: #00ffc8;
+    --accent-glow: rgba(0,255,200,0.12);
+    --accent-text: #000000;
+    --mesh-1: rgba(168,85,247,0.2);
+    --mesh-2: rgba(0,255,200,0.12);
+    --mesh-3: rgba(244,63,94,0.1);
+    --border-color: rgba(255,255,255,0.06);
+    --divider-color: rgba(0,255,200,0.12);
+    --shadow-color: rgba(0,255,200,0.15);
+    --quote-border: var(--accent-cyan);
+    --quote-bg: rgba(0,255,200,0.04);
+    --tag-bg: rgba(0,255,200,0.1);
+    --tag-text: var(--accent-cyan);
+    --font-display: 'Clash Display', sans-serif;
+    --font-body: 'Satoshi', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --title-size: 112px;
+    --body-size: 28px;
+    --note-size: 18px;
+    --slide-padding: 72px;
+    --content-gap: 32px;
+    --col-gap: 64px;
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --duration-normal: 0.6s;
 }
 ```
 
-**Signature Elements:**
-- Mesh gradient——多层 radial-gradient 叠加，边缘模糊流动
-- 青色 + 紫色 + 玫红三色交汇
-- 内容偏移（避开 gradient 区域），形成视觉焦点
-- 微妙的 glow 效果（box-shadow: 0 0 40px accent）
-- 快速、有节奏的 stagger reveal（0.15s 间隔）
+**Signature CSS:**
+```css
+/* Signature: mesh gradient background via pseudo-element */
+.slide::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background:
+        radial-gradient(ellipse 600px 600px at 20% 30%, var(--mesh-1, rgba(168,85,247,0.2)) no-repeat,
+        radial-gradient(ellipse 500px 500px at 70% 60%, var(--mesh-2, rgba(0,255,200,0.12)) no-repeat,
+        radial-gradient(ellipse 400px 400px at 50% 80%, var(--mesh-3, rgba(244,63,94,0.1)) no-repeat;
+    opacity: 1;
+    pointer-events: none;
+}
+```
 
 ---
 
 ## 4. 赤金 Aureate
 
-**氛围：** 奢华、权威、国际——投行路演、CEO 战略汇报的视觉语言
+**氛围：** 投行路演 — 深蓝+金线、奢华权威
 
-**布局：** 深蓝底板，金色线条与点缀。经典对称或左侧标题+右侧数据。
-
-**设计灵感：** 国际金融品牌视觉。参考：Goldman Sachs、JP Morgan 年报、高端腕表品牌站。
-
-**Typography:**
-- Display: `Playfair Display` (700/900) — 经典衬线，权威与优雅
-- Body: `Source Sans 3` (400/600) — 清晰功能型，高可读性
+**字体：**
+- Display: `Playfair Display` (700/900) — Google Fonts
+- Body: `Source Sans 3` (400/600) — Google Fonts
 
 **Font CDN:**
 ```html
@@ -151,123 +239,201 @@
 **Colors:**
 ```css
 :root {
-    --bg-primary: #0a1628;     /* 深蓝——权威感 */
+    --theme-name: 'Aureate';
+    --theme-version: '1.0';
+    --bg-primary: #0a1628;
     --bg-gradient: linear-gradient(135deg, #0a1628 0%, #132244 50%, #0a1628 100%);
-    --text-primary: #f5f0e8;
-    --text-secondary: #8a9ab5;
-    --accent-gold: #c9a96e;    /* 金——不是廉价黄 */
-    --accent-gold-light: #e8d4b0;
-    --accent-gold-glow: rgba(201,169,110,0.2);
-    --border-gold: rgba(201,169,110,0.3);
     --stage-bg: #000;
     --slide-bg: #0a1628;
+    --text-primary: #f5f0e8;
+    --text-secondary: #8a9ab5;
+    --text-muted: #5a6a7a;
+    --accent-gold: #c9a96e;
+    --accent-gold-light: #e8d4b0;
+    --accent-gold-glow: rgba(201,169,110,0.12);
+    --accent: var(--accent-gold);
+    --accent-text: #000000;
+    --border-color: rgba(201,169,110,0.15);
+    --divider-color: rgba(201,169,110,0.12);
+    --shadow-color: rgba(201,169,110,0.1);
+    --quote-border: var(--accent-gold);
+    --quote-bg: rgba(201,169,110,0.04);
+    --tag-bg: rgba(201,169,110,0.1);
+    --tag-text: var(--accent-gold);
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Source Sans 3', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --title-size: 80px;
+    --body-size: 30px;
+    --note-size: 20px;
+    --slide-padding: 100px;
+    --content-gap: 40px;
+    --col-gap: 80px;
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --duration-normal: 0.8s;
 }
 ```
 
-**Signature Elements:**
-- 金色细线（1-2px）作为分割或边框
-- 金色标题或金色数字强调
-- 深蓝底板上的低透明度菱形/条纹纹理（如纹章暗纹）
-- 经典对称布局，或左标题 + 右内容双栏
-- 衬线标题的大写 + tracking 加宽（letter-spacing: 0.08em）
+**Signature CSS:**
+```css
+/* Signature: gold diagonal line decoration */
+.slide::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, transparent 0%, transparent 48%, var(--accent-gold, #c9a96e) 48%, var(--accent-gold, #c9a96e) 48.5%, transparent 48.5%) no-repeat;
+    opacity: 0.08;
+    pointer-events: none;
+}
+```
 
 ---
 
 ## 5. 雾林 Mist Grove
 
-**氛围：** 自然、沉稳、可持续——森林深处有光透入的宁静
+**氛围：** Biophilic 可持续 — 深林+暖光斑
 
-**布局：** 深绿底板，一角有柔和的暖光圆（如林间光斑）。内容居中或偏移。
-
-**设计灵感：** Biophilic Design × 当代可持续品牌。参考：Patagonia、Allbirds、北欧生态建筑事务所。
-
-**Typography:**
-- Display: `DM Serif Display` (400) — 温暖衬线，不张扬
-- Body: `DM Sans` (400/500) — 干净、友好
+**字体：**
+- Display: `DM Serif Display` (400/700) — Google Fonts
+- Body: `DM Sans` (400/500) — Google Fonts
 
 **Font CDN:**
 ```html
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 ```
 
 **Colors:**
 ```css
 :root {
-    --bg-primary: #0f1f17;     /* 深林绿 */
+    --theme-name: 'Mist Grove';
+    --theme-version: '1.0';
+    --bg-primary: #0f1f17;
     --bg-gradient: linear-gradient(160deg, #0f1f17 0%, #1a3025 60%, #0f1f17 100%);
+    --stage-bg: #0a0a0a;
+    --slide-bg: #0f1f17;
     --text-primary: #e8e4d9;
     --text-secondary: #8a9a80;
-    --accent-light: #f0e6d0;   /* 暖光——林间穿透的阳光 */
-    --accent-moss: #7a9a6a;    /* 苔藓绿 */
-    --accent-amber: #d4a06a;   /* 琥珀 */
-    --glow-warm: radial-gradient(ellipse at 75% 25%, rgba(240,230,208,0.12) 0%, transparent 50%);
-    --stage-bg: #000;
-    --slide-bg: #0f1f17;
+    --text-muted: #5a6a50;
+    --accent-light: #f0e6d0;
+    --accent-moss: #7a9a6a;
+    --accent-amber: #d4a056;
+    --accent: var(--accent-light);
+    --accent-glow: rgba(240,230,208,0.1);
+    --accent-text: #0f1f17;
+    --border-color: rgba(240,230,208,0.1);
+    --divider-color: rgba(240,230,208,0.08);
+    --shadow-color: rgba(240,230,208,0.08);
+    --quote-border: var(--accent-moss);
+    --quote-bg: rgba(122,154,106,0.06);
+    --tag-bg: rgba(122,154,106,0.15);
+    --tag-text: var(--accent-light);
+    --font-display: 'DM Serif Display', serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --title-size: 72px;
+    --body-size: 30px;
+    --note-size: 20px;
+    --slide-padding: 100px;
+    --content-gap: 40px;
+    --col-gap: 80px;
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --duration-normal: 0.9s;
 }
 ```
 
-**Signature Elements:**
-- 一角暖光径向渐变（林间光斑）
-- 苔藓绿 + 琥珀的低调搭配
-- 细竖线或水平线（自然"茎线"隐喻）
-- 衬线标题的 italic 变体作为签名元素
-- 极慢的 fade-in（0.8-1.2s），呼吸般的节奏
+**Signature CSS:**
+```css
+/* Signature: forest light spots via radial-gradient */
+.slide::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background:
+        radial-gradient(circle 80px at 20% 30%, rgba(240,230,208,0.06) no-repeat,
+        radial-gradient(circle 120px at 75% 60%, rgba(240,230,208,0.04)) no-repeat;
+    pointer-events: none;
+}
+```
 
 ---
 
 ## 6. 冰川 Glacier
 
-**氛围：** 极简、纯净、可信——冰川般的冷静与透明
+**氛围：** Nordic 极简 — 冰蓝、纯净
 
-**布局：** 纯白或极浅蓝底板。内容居中或微偏左。极细的蓝色线条点缀。
-
-**设计灵感：** Nordic minimal × 当代 SaaS 品牌。参考：Figma、Notion、Spotify Design。
-
-**Typography:**
-- Display: `Outfit` (700/800) — 几何无衬线，冷感但不冷漠
-- Body: `Outfit` (400/500) — 同族字体保持一致性
+**字体：**
+- Display+Body: `Outfit` (300/400/600/700) — Google Fonts
 
 **Font CDN:**
 ```html
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
 ```
 
 **Colors:**
 ```css
 :root {
-    --bg-primary: #f8fafc;     /* 极浅蓝灰——冰面反光 */
+    --theme-name: 'Glacier';
+    --theme-version: '1.0';
+    --bg-primary: #f8fafc;
     --bg-secondary: #e2e8f0;
-    --text-primary: #0f172a;   /* 深蓝黑——冰下深水 */
-    --text-secondary: #64748b;
-    --accent: #0ea5e9;         /* 冰蓝 */
-    --accent-light: #e0f2fe;
-    --accent-deep: #0369a1;
-    --line-thin: rgba(14,165,233,0.15);
-    --stage-bg: #f8fafc;
+    --bg-gradient: none;
+    --stage-bg: #f0f4f8;
     --slide-bg: #f8fafc;
+    --text-primary: #0f172a;
+    --text-secondary: #64748b;
+    --text-muted: #94a3b8;
+    --accent: #0ea5e9;
+    --accent-secondary: #6366f1;
+    --accent-tertiary: #06b6d4;
+    --accent-glow: rgba(14,165,233,0.1);
+    --accent-text: #ffffff;
+    --border-color: rgba(14,165,233,0.12);
+    --divider-color: rgba(14,165,233,0.1);
+    --shadow-color: rgba(14,165,233,0.08);
+    --quote-border: var(--accent);
+    --quote-bg: rgba(14,165,233,0.04);
+    --tag-bg: rgba(14,165,233,0.1);
+    --tag-text: var(--accent);
+    --font-display: 'Outfit', sans-serif;
+    --font-body: 'Outfit', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --title-size: 96px;
+    --body-size: 28px;
+    --note-size: 18px;
+    --slide-padding: 80px;
+    --content-gap: 32px;
+    --col-gap: 64px;
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --duration-normal: 0.5s;
 }
 ```
 
-**Signature Elements:**
-- 极细冰蓝线条（0.15 透明度），如冰裂纹
-- 大面积留白，中心聚焦
-- 数字或关键词用冰蓝高亮
-- 无阴影、无渐变、无纹理——纯净表面
-- 快速干脆的动画（0.3-0.4s），不拖泥带水
+**Signature CSS:**
+```css
+/* Signature: thin ice-blue vertical line */
+.slide::after {
+    content: '';
+    position: absolute;
+    right: 120px;
+    top: 60px; bottom: 60px;
+    width: 1px;
+    background: var(--accent);
+    opacity: 0.15;
+    pointer-events: none;
+}
+```
 
 ---
 
 ## 7. 混凝土 Concrete
 
-**氛围：** 粗犷、坚定、反叛——柏林设计工作室的 Neo-Brutalism
+**氛围：** Neo-Brutalism — 柏林设计、粗边框、硬阴影
 
-**布局：** 大色块拼接，粗边框，不对称。文字和图形互相穿插。
-
-**设计灵感：** Neo-Brutalism × 当代街头设计。参考：Figma Config 2023 视觉、Gumroad、Berlin design studios。
-
-**Typography:**
-- Display: `Space Grotesk` (700) — 几何感，不妥协
-- Mono: `Space Mono` (400/700) — 代码感，穿插在标题中
+**字体：**
+- Display: `Space Grotesk` (700) — Google Fonts
+- Body: `Space Mono` (400/700) — Google Fonts
 
 **Font CDN:**
 ```html
@@ -277,40 +443,62 @@
 **Colors:**
 ```css
 :root {
-    --bg-primary: #f0f0f0;     /* 浅灰——混凝土表面 */
-    --bg-dark: #1a1a1a;
-    --text-primary: #1a1a1a;
-    --text-on-dark: #f0f0f0;
-    --accent-1: #ff3366;       /* 鲜红粉——高饱和 */
-    --accent-2: #00cc88;       /* 绿——对比冲击 */
-    --accent-3: #ffcc00;       /* 黄——第三色 */
-    --border-bold: #1a1a1a;    /* 3px 粗边框 */
-    --shadow-hard: 4px 4px 0px #1a1a1a;  /* 硬阴影 */
-    --stage-bg: #f0f0f0;
+    --theme-name: 'Concrete';
+    --theme-version: '1.0';
+    --bg-primary: #f0f0f0;
+    --bg-secondary: #e0e0e0;
+    --bg-gradient: none;
+    --stage-bg: #e8e8e8;
     --slide-bg: #f0f0f0;
+    --text-primary: #1a1a1a;
+    --text-secondary: #555555;
+    --text-muted: #888888;
+    --accent-1: #ff3366;
+    --accent-2: #00cc88;
+    --accent-3: #ffcc00;
+    --accent: var(--accent-1);
+    --accent-glow: rgba(255,51,102,0.1);
+    --accent-text: #ffffff;
+    --border-bold: #1a1a1a;
+    --border-color: #1a1a1a;
+    --divider-color: rgba(0,0,0,0.12);
+    --shadow-color: rgba(0,0,0,0.2);
+    --quote-border: var(--border-bold);
+    --quote-bg: #e8e8e8;
+    --tag-bg: var(--accent-1);
+    --tag-text: #ffffff;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Space Mono', monospace;
+    --font-mono: 'Space Mono', monospace;
+    --title-size: 80px;
+    --body-size: 26px;
+    --note-size: 18px;
+    --slide-padding: 72px;
+    --content-gap: 32px;
+    --col-gap: 64px;
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --duration-normal: 0.4s;
 }
 ```
 
-**Signature Elements:**
-- 3-4px 粗黑边框（Neo-Brutalism 标志）
-- 硬阴影（4px 4px 0px），无模糊
-- 大色块拼接（红/绿/黄饱和色）
-- Mono 字体穿插在标题中（如 "THE `CODE` IS LAW"）
-- 无圆角（border-radius: 0），或极少圆角（4px）
+**Signature CSS:**
+```css
+/* Signature: hard shadow on .slide (Brutalist) */
+.slide {
+    border: 3px solid var(--border-bold, #1a1a1a);
+    box-shadow: 4px 4px 0px var(--border-bold, #1a1a1a);
+}
+```
 
 ---
 
 ## 8. 纸墨 Ink Paper
 
-**氛围：** 编辑感、沉思、文字至上——当代杂志的数字版本
+**氛围：** 当代编辑设计 — 文人感、墨红标注
 
-**布局：** 暖米色底板，居中或左对齐内容。强字体层级。pull quote 作为视觉焦点。
-
-**设计灵感：** 当代编辑设计 × 数字出版。参考：The New York Times 数字版、Monocle、Medium Featured。
-
-**Typography:**
-- Display: `Cormorant Garamond` (600/700) — 优雅衬线，不老气
-- Body: `IBM Plex Sans` (400/500) — 功能型，高可读
+**字体：**
+- Display: `Cormorant Garamond` (600/700) — Google Fonts
+- Body: `IBM Plex Sans` (400/500) — Google Fonts
 
 **Font CDN:**
 ```html
@@ -320,38 +508,64 @@
 **Colors:**
 ```css
 :root {
-    --bg-primary: #faf8f3;     /* 暖米——纸张色 */
+    --theme-name: 'Ink Paper';
+    --theme-version: '1.0';
+    --bg-primary: #faf8f3;
     --bg-secondary: #f0ece4;
+    --bg-gradient: none;
+    --stage-bg: #f5f0e8;
+    --slide-bg: #faf8f3;
     --text-primary: #1a1a1a;
     --text-secondary: #555555;
-    --accent: #c41e3a;         /* 墨红——编辑标注色 */
+    --text-muted: #888888;
+    --accent: #c41e3a;
     --accent-light: #f8e8ec;
-    --hr-color: #d4d0c8;       /* 水平分割线 */
-    --stage-bg: #faf8f3;
-    --slide-bg: #faf8f3;
+    --accent-glow: rgba(196,30,58,0.08);
+    --accent-text: #ffffff;
+    --border-color: rgba(0,0,0,0.08);
+    --divider-color: #d4d0c8;
+    --shadow-color: rgba(0,0,0,0.06);
+    --quote-border: var(--accent);
+    --quote-bg: rgba(196,30,58,0.03);
+    --tag-bg: rgba(196,30,58,0.08);
+    --tag-text: var(--accent);
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'IBM Plex Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+    --title-size: 88px;
+    --body-size: 30px;
+    --note-size: 20px;
+    --slide-padding: 80px;
+    --content-gap: 36px;
+    --col-gap: 64px;
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --duration-normal: 0.6s;
 }
 ```
 
-**Signature Elements:**
-- Drop cap（首字母大写放大，2-3 行高）
-- Pull quote（独立引用块，大字号 italic）
-- 优雅的水平分割线（细线，暖灰）
-- 墨红用于引用、标注、强调
-- 长文本的舒适行高（line-height: 1.6-1.8）
+**Signature CSS:**
+```css
+/* Signature: elegant horizontal divider line */
+.slide-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 1px;
+    background: var(--divider-color, #d4d0c8);
+    margin: 24px auto 0;
+    opacity: 0.5;
+}
+```
 
 ---
 
 ## 9. 电光 Volt
 
-**氛围：** 快节奏、高能量、创业——创业路演的视觉冲击力
+**氛围：** 创业路演 — 电光青+热粉红、高能量
 
-**布局：** 深色底板，高对比度强调色。大标题居左，数据/图表居右。
-
-**设计灵感：** 当代创业路演 × 科技发布会。参考：Apple Keynote 暗色模式、Tesla 发布会、Y Combinator Demo Day。
-
-**Typography:**
-- Display: `Clash Display` (600/700) — Fontshare，硬朗几何
-- Body: `Satoshi` (400/500/700) — Fontshare，多功能
+**字体：**
+- Display: `Clash Display` (600/700) — Fontshare
+- Body: `Satoshi` (400/500/700) — Fontshare
 
 **Font CDN:**
 ```html
@@ -361,82 +575,123 @@
 **Colors:**
 ```css
 :root {
+    --theme-name: 'Volt';
+    --theme-version: '1.0';
     --bg-primary: #0a0a0a;
     --bg-secondary: #141414;
-    --text-primary: #ffffff;
-    --text-secondary: #888888;
-    --accent-electric: #00e5ff;  /* 电光青 */
-    --accent-hot: #ff2d55;      /* 热粉红 */
-    --accent-electric-glow: rgba(0,229,255,0.2);
-    --accent-hot-glow: rgba(255,45,85,0.2);
-    --grid-subtle: rgba(255,255,255,0.03);
+    --bg-gradient: none;
     --stage-bg: #000;
     --slide-bg: #0a0a0a;
+    --text-primary: #ffffff;
+    --text-secondary: #888888;
+    --text-muted: #555555;
+    --accent-electric: #00e5ff;
+    --accent-hot: #ff2d55;
+    --accent: var(--accent-electric);
+    --accent-glow: rgba(0,229,255,0.2);
+    --accent-text: #000000;
+    --border-color: rgba(0,229,255,0.15);
+    --divider-color: rgba(0,229,255,0.1);
+    --shadow-color: rgba(0,229,255,0.15);
+    --quote-border: var(--accent-electric);
+    --quote-bg: rgba(0,229,255,0.04);
+    --tag-bg: rgba(0,229,255,0.12);
+    --tag-text: var(--accent-electric);
+    --font-display: 'Clash Display', sans-serif;
+    --font-body: 'Satoshi', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --title-size: 120px;
+    --body-size: 28px;
+    --note-size: 18px;
+    --slide-padding: 80px;
+    --content-gap: 32px;
+    --col-gap: 64px;
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --duration-normal: 0.4s;
 }
 ```
 
-**Signature Elements:**
-- 电光青 + 热粉红双强调色
-- 微妙网格背景（0.03 透明度）
-- 数据/数字用 accent 超大字号展示
-- glow 效果（box-shadow 大范围发光）
-- 快速 stagger reveal（0.1s 间隔），节奏紧凑
+**Signature CSS:**
+```css
+/* Signature: electric glow on .slide-title */
+.slide-title {
+    text-shadow: 0 0 20px var(--accent-glow, rgba(0,229,255,0.2));
+}
+```
 
 ---
 
 ## 10. 砂岩 Sandstone
 
-**氛围：** 温暖、自然、生活方式——地中海阳光下的当代品牌叙事
+**氛围：** 地中海生活方式 — 赤陶+橄榄、温暖
 
-**布局：** 温暖米色底板，不对称排列。大标题偏一侧，图片/卡片偏另一侧。
-
-**设计灵感：** 当代生活方式品牌 × 地中海美学。参考：Aesop、COS、Kinfolk Magazine、墨西哥/西班牙当代设计。
-
-**Typography:**
-- Display: `Fraunces` (700/900) — 独特可变衬线，温暖有个性
-- Body: `Work Sans` (400/500) — 干洁功能型
+**字体：**
+- Display: `Fraunces` (400/700) — Google Fonts
+- Body: `Work Sans` (400/500) — Google Fonts
 
 **Font CDN:**
 ```html
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;700&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
 ```
 
 **Colors:**
 ```css
 :root {
-    --bg-primary: #f5efe6;     /* 砂岩米——温暖底色 */
+    --theme-name: 'Sandstone';
+    --theme-version: '1.0';
+    --bg-primary: #f5efe6;
     --bg-secondary: #e8dcc8;
-    --text-primary: #2d1f14;   /* 深棕——大地色 */
-    --text-secondary: #6b5344;
-    --accent-terra: #c4654a;   /* 赭红——赤陶色 */
-    --accent-sand: #d4b896;    /* 沙色 */
-    --accent-olive: #7a8a5a;   /* 橄榄绿点缀 */
-    --accent-terra-light: #f5d8d0;
-    --stage-bg: #f5efe6;
+    --bg-gradient: none;
+    --stage-bg: #f0e8d8;
     --slide-bg: #f5efe6;
+    --text-primary: #2d1f14;
+    --text-secondary: #6b5344;
+    --text-muted: #8a7a6a;
+    --accent-terra: #c4654a;
+    --accent-sand: #d4b896;
+    --accent-olive: #7a8a5a;
+    --accent: var(--accent-terra);
+    --accent-glow: rgba(196,101,74,0.12);
+    --accent-text: #ffffff;
+    --border-color: rgba(45,31,20,0.1);
+    --divider-color: rgba(196,101,74,0.15);
+    --shadow-color: rgba(45,31,20,0.08);
+    --quote-border: var(--accent-terra);
+    --quote-bg: rgba(196,101,74,0.04);
+    --tag-bg: rgba(196,101,74,0.12);
+    --tag-text: var(--accent-terra);
+    --font-display: 'Fraunces', serif;
+    --font-body: 'Work Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --title-size: 80px;
+    --body-size: 30px;
+    --note-size: 20px;
+    --slide-padding: 80px;
+    --content-gap: 36px;
+    --col-gap: 64px;
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --duration-normal: 0.5s;
 }
 ```
 
-**Signature Elements:**
-- 赭红赤陶色作为强调（标题、标注、按钮）
-- 橄榄绿作为第二点缀（小标签、图标）
-- 圆角卡片（border-radius: 16px），柔和不锐利
-- 抽象几何装饰（圆环 + 短线 + 小点），不用插画
-- 缓慢优雅的动画（0.6-0.8s），如阳光移动的节奏
+**Signature CSS:**
+```css
+/* Signature: warm terra cotta rounded corner on .slide */
+.slide {
+    border-radius: 16px;
+    background: var(--slide-bg);
+}
+```
 
 ---
 
 ## 11. 芭乐 Guava
 
-**氛围：** 温暖、亲切、手绘——像翻开一本带着果香的私人笔记本
+**氛围：** 温暖手绘 — 芭乐粉+皮绿、有机圆润
 
-**布局：** 柔粉色底板，手绘风格的波浪线和有机形状装饰。内容随性排列，像写在笔记本上的涂鸦。
-
-**设计灵感：** 手绘笔记 × 当代温暖品牌。参考：子弹笔记（Bullet Journal）美学、Kikki.K、 Papier 等手写文具品牌、儿童绘本的温暖感。
-
-**Typography:**
-- Display: `Caveat` (700) — 手写感展示字体，温暖亲切
-- Body: `Nunito` (400/600) — 圆润柔和，与手写标题完美搭配
+**字体：**
+- Display: `Caveat` (700) — Google Fonts (handwriting)
+- Body: `Nunito` (400/600) — Google Fonts
 
 **Font CDN:**
 ```html
@@ -446,46 +701,69 @@
 **Colors:**
 ```css
 :root {
-    --bg-primary: #fef5f0;      /* 芭乐粉白——果肉色 */
+    --theme-name: 'Guava';
+    --theme-version: '1.0';
+    --bg-primary: #fef5f0;
     --bg-secondary: #fce8e0;
     --bg-warm: #faf0e8;
-    --text-primary: #3d2b1f;    /* 深棕——果核色 */
-    --text-secondary: #7a5c4a;
-    --accent-pink: #ff8fa3;     /* 芭乐肉粉——核心色 */
-    --accent-pink-light: #ffd4db;
-    --accent-green: #5a8a6a;   /* 芭乐皮绿——对比色 */
-    --accent-green-light: #d4e8d8;
-    --accent-seed: #f0d4a0;    /* 芭乐籽黄——点缀 */
-    --hand-drawn: #5a4030;     /* 手绘线色——铅笔棕 */
-    --wavy-opacity: 0.12;      /* 波浪装饰透明度 */
+    --bg-gradient: none;
     --stage-bg: #fef5f0;
     --slide-bg: #fef5f0;
+    --text-primary: #3d2b1f;
+    --text-secondary: #7a5c4a;
+    --text-muted: #a08060;
+    --accent-pink: #ff8fa3;
+    --accent-pink-light: #ffd4db;
+    --accent-green: #5a8a6a;
+    --accent: var(--accent-pink);
+    --accent-glow: rgba(255,143,163,0.15);
+    --accent-text: #3d2b1f;
+    --wavy-opacity: 0.12;
+    --border-color: rgba(255,143,163,0.2);
+    --divider-color: rgba(90,138,106,0.15);
+    --shadow-color: rgba(255,143,163,0.1);
+    --quote-border: var(--accent-pink);
+    --quote-bg: rgba(255,143,163,0.05);
+    --tag-bg: rgba(255,143,163,0.15);
+    --tag-text: var(--accent-pink);
+    --font-display: 'Caveat', cursive;
+    --font-body: 'Nunito', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --title-size: 72px;
+    --body-size: 30px;
+    --note-size: 20px;
+    --slide-padding: 80px;
+    --content-gap: 36px;
+    --col-gap: 64px;
+    --ease-out-expo: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --duration-normal: 0.5s;
 }
 ```
 
-**Signature Elements:**
-- 手绘波浪线装饰（border-image 或 SVG 内联），非几何直线
-- 有机圆形/椭圆装饰（芭乐切片形状隐喻）
-- 芭乐粉色大面积使用（标题背景、卡片、标注）
-- 芭乐皮绿作为对比点缀（小标签、图标、进度条）
-- 柔和圆角（border-radius: 20-24px），绝不尖锐
-- Nunito 圆润字体 + Caveat 手写标题，温暖对比
-- 轻松跳跃的动画节奏（0.4-0.5s，带弹性 bounce）
+**Signature CSS:**
+```css
+/* Signature: wavy organic decoration via pseudo-element */
+.slide::before {
+    content: '';
+    position: absolute;
+    bottom: 40px; left: 40px; right: 40px;
+    height: 20px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20'%3E%3Cpath d='M0 10 Q50 0 100 10 T200 10' stroke='%23ff8fa3' fill='none' stroke-width='2' opacity='0.3'/%3E%3C/svg%3E") repeat-x;
+    opacity: var(--wavy-opacity, 0.12);
+    pointer-events: none;
+}
+```
 
 ---
 
 ## 12. 玄金 Obsidian
 
-**氛围：** 冷静沉着、庄严内敛——中国漆器与宣纸的千年对话
+**氛围：** 冷静沉着中国风 — 漆器+描金
 
-**布局：** 碳黑底板，金漆色细线与点缀。竖线或竖排装饰元素。内容居中或对称排列，庄重克制。
-
-**设计灵感：** 中国传统漆器美学 × 当代东方极简。参考：中国漆器（黑漆描金）、故宫博物院品牌、日本能乐舞台美学、北京故宫出版社。
-
-**Typography:**
-- Display: `Noto Serif SC` (700/900) — 中国传统宋体，庄重典雅
-- Accent: `Ma Shan Zheng` (400) — 毛笔行楷，用于签名式装饰文字
-- Body: `Noto Sans SC` (400/500) — 简洁中文黑体，高可读性
+**字体：**
+- Display: `Noto Serif SC` (700/900) — Google Fonts
+- Accent: `Ma Shan Zheng` (400) — Google Fonts (brush calligraphy)
+- Body: `Noto Sans SC` (400/500) — Google Fonts
 
 **Font CDN:**
 ```html
@@ -495,30 +773,71 @@
 **Colors:**
 ```css
 :root {
-    --bg-primary: #0d0d0d;      /* 碳黑——漆器底色 */
+    --theme-name: 'Obsidian';
+    --theme-version: '1.0';
+    --bg-primary: #0d0d0d;
     --bg-gradient: linear-gradient(135deg, #0d0d0d 0%, #1a1510 50%, #0d0d0d 100%);
-    --text-primary: #f5efe6;    /* 暖白——宣纸色 */
-    --text-secondary: #8a7e6a;  /* 暗金灰 */
-    --accent-gold: #c49b3a;     /* 金漆——传统中国金，琥珀暖调 */
-    --accent-gold-light: #e8d4b0;
-    --accent-gold-glow: rgba(196,155,58,0.15);
-    --accent-red: #8b2500;      /* 暗朱红——传统中国红，克制不张扬 */
-    --accent-red-light: rgba(139,37,0,0.08);
-    --border-gold: rgba(196,155,58,0.3);
-    --pattern-opacity: 0.04;   /* 回纹/云纹暗纹透明度 */
     --stage-bg: #000;
     --slide-bg: #0d0d0d;
+    --text-primary: #f5efe6;
+    --text-secondary: #8a7e6a;
+    --text-muted: #5a5a4a;
+    --accent-gold: #c49b3a;
+    --accent-gold-light: #e8d4b0;
+    --accent-gold-glow: rgba(196,155,58,0.15);
+    --accent-red: #8b2500;
+    --accent: var(--accent-gold);
+    --accent-text: #0d0d0d;
+    --border-gold: rgba(196,155,58,0.3);
+    --pattern-opacity: 0.04;
+    --border-color: rgba(196,155,58,0.2);
+    --divider-color: rgba(196,155,58,0.15);
+    --shadow-color: rgba(196,155,58,0.1);
+    --quote-border: var(--accent-gold);
+    --quote-bg: rgba(196,155,58,0.04);
+    --tag-bg: rgba(196,155,58,0.12);
+    --tag-text: var(--accent-gold);
+    --font-display: 'Noto Serif SC', serif;
+    --font-body: 'Noto Sans SC', sans-serif;
+    --font-mono: 'Noto Sans SC', sans-serif;
+    --font-brush: 'Ma Shan Zheng', cursive;
+    --title-size: 64px;
+    --body-size: 32px;
+    --note-size: 20px;
+    --slide-padding: 100px;
+    --content-gap: 32px;
+    --col-gap: 80px;
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --duration-normal: 0.8s;
 }
 ```
 
-**Signature Elements:**
-- 金漆色细线（1-2px）作为竖分割线或边框——致敬漆器描金
-- 毛笔行楷（Ma Shan Zheng）用于章节标题或签名式装饰短语
-- 低透明度回纹/云纹暗纹背景（CSS 重复 pattern 或 SVG 内联）
-- 竖排文字装饰（writing-mode: vertical-rl）用于页边签名或页码
-- 暗朱红仅用于极少量强调（一个词、一个数字），绝不大面积
-- 宋体标题 + 简洁黑体正文，传统与现代的对话
-- 极慢克制动画（0.8-1.2s），如卷轴缓缓展开
+**Signature CSS:**
+```css
+/* Signature: fret/cloud pattern background + gold vertical line */
+.slide::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 79px, var(--border-color, rgba(196,155,58,0.2)) 79px, var(--border-color, rgba(196,155,58,0.2)) 80px),
+        repeating-linear-gradient(90deg, transparent, transparent 79px, var(--border-color, rgba(196,155,58,0.2)) 79px, var(--border-color, rgba(196,155,58,0.2)) 80px);
+    background-size: 80px 80px;
+    opacity: var(--pattern-opacity, 0.04);
+    pointer-events: none;
+}
+.slide::after {
+    content: '';
+    position: absolute;
+    left: 120px;
+    top: 80px; bottom: 80px;
+    width: 1px;
+    background: var(--accent-gold, var(--accent));
+    opacity: 0.25;
+    pointer-events: none;
+}
+```
 
 ---
 
@@ -538,18 +857,6 @@
 | 砂岩 Sandstone | Fraunces | Work Sans | Google |
 | 芭乐 Guava | Caveat | Nunito | Google |
 | 玄金 Obsidian | Noto Serif SC + Ma Shan Zheng | Noto Sans SC | Google |
-
----
-
-## 禁用清单（通用 AI 稀烂模式）
-
-**字体：** Inter、Roboto、Arial、系统字体作为展示字体
-
-**颜色：** `#6366f1`（通用靛蓝）、白底紫渐变
-
-**布局：** 万物居中、通用 hero section、千篇一律的卡片网格
-
-**装饰：** 写实插画、无意义的 glassmorphism、没有目的的阴影
 
 ---
 
