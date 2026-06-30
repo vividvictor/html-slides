@@ -44,6 +44,7 @@ Determine what the user wants:
 | **A: New Presentation** | "做一份演示文稿", "create slides", "pitch deck" | Phase 1 |
 | **B: PPT Conversion** | User provides a .pptx/.ppt file | Phase 4 |
 | **C: Enhancement** | User wants to modify an existing HTML deck | Modify directly, following Fixed Stage Rules |
+| **D: Style Transfer** | "change to X style", "switch theme", "换成X风格" | Style Transfer Protocol |
 
 ### Phase 1: Content Discovery
 
@@ -130,6 +131,76 @@ When converting PowerPoint files:
 2. Present extracted slide titles, content summaries, image counts to user for confirmation
 3. Proceed to Phase 2 for style discovery
 4. Generate HTML preserving all text, images, slide order, and speaker notes (as HTML comments)
+
+
+---
+
+## Style Transfer Protocol
+
+When user says: "change to X style", "switch to X theme", "换成X风格", "迁移到X风格"
+
+### How it works
+
+1. **Parse target style** — Identify which of the 12 presets the user wants
+2. **Extract the contract** — Read the `:root {}` block and `<link>` font tags from `references/style-presets.md` for the target style
+3. **Replace in HTML** — Only replace these parts in the existing HTML file:
+   - The `:root {}` CSS block (the entire block)
+   - The font `<link>` / `<style>` tags in `<head>`
+   - The `var(--theme-name)` value (optional, for identification)
+4. **Do NOT touch** — Any `.slide` content, `.reveal` classes, or semantic class names
+
+### Why this works
+
+The semantic class system (see `references/html-template.md`) ensures that HTML content is decoupled from visual style. The `:root {}` CSS variables are the contract:
+- `.slide-title` maps to `var(--title-size)`, `var(--font-display)`, `var(--text-primary)`
+- `.highlight` maps to `var(--accent)`
+- `.quote-block` maps to `var(--quote-border)`, `var(--quote-bg)`
+- `.col-2` uses `var(--col-2-gap)`
+
+### Step-by-step
+
+```
+1. IDENTIFY target style preset (from user input)
+2. READ references/style-presets.md → extract the `:root {}` block for that preset
+3. READ the existing HTML file
+4. FIND the current `:root {}` block in the HTML's `<style>` tag
+5. REPLACE the `:root {}` block with the new one from the preset
+6. FIND and REPLACE any font `<link>` tags in `<head>`
+7. SAVE the updated HTML file
+8. PREVIEW to verify
+```
+
+### Important notes
+
+- **Font loading**: If the target style uses different fonts (Google Fonts vs Fontshare), update the `<link>` tags accordingly
+- **Background gradient**: Some styles define `--bg-gradient` (e.g., Aurora, Lava). Make sure to include it
+- **Print styles**: The `@media print {}` block should be preserved as-is (it's style-agnostic)
+- **Speaker View**: The speaker view CSS is also style-agnostic and should be preserved
+- **Verify**: After transfer, open the HTML and check that:
+  - Colors changed to target style
+  - Fonts changed to target style
+  - Content is untouched (same text, same layout)
+
+### Example
+
+User says: "把这个演示文稿换成芭乐风格" (Change this presentation to Guava style)
+
+```
+1. Target style: 芭乐 Guava
+2. Extract from style-presets.md:
+   :root {
+       --bg-primary: #fef5f0;
+       --text-primary: #2a2a2a;
+       --accent: #ff8fa3;
+       ...
+   }
+   Font link: <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+3. In the HTML file, find and replace:
+   - OLD `:root {}` → NEW `:root {}` (Guava version)
+   - OLD font link → NEW font link (Caveat + Nunito)
+4. Save and preview
+```
+
 
 ### Phase 5: Delivery
 
