@@ -289,10 +289,12 @@ Reference architecture for generating slide presentations. Every presentation fo
 Every presentation must include:
 
 1. **SlidePresentation Class** — Main controller with:
-   - Keyboard navigation (arrows, space, page up/down, Home/End)
+   - Keyboard navigation (arrows, space, page up/down, Home/End, **S for speaker view**)
    - Touch/swipe support for mobile
    - Mouse wheel navigation with debounce
    - Stage scaling (1920×1080 → viewport fit, letterbox/pillarbox acceptable)
+   - **Speaker View** (see Speaker View section below)
+   - **Print/PDF support** (see Print/PDF section below)
 
 2. **InlineEditor Class** — Post-draft editing affordance:
    - Hotzone hover detection with 400ms grace period
@@ -358,7 +360,445 @@ Every presentation must include:
 
 **IMPORTANT: Do NOT use CSS `~` sibling selector for hover-based show/hide.** `pointer-events: none` breaks the hover chain. Must use JS with delay timeout.
 
-## Image Pipeline (Skip If No Images)
+## Speaker View（演讲者模式）
+
+按下 `S` 键打开演讲者视图窗口，用于实际演讲场景。
+
+### 实现原理
+
+- 主窗口按 `S` → 用 `window.open` 打开 `speaker.html`（同一文件，通过 URL hash 区分）
+- 两个窗口通过 `BroadcastChannel API` 同步当前页码
+- 演讲者窗口不缩放舞台，而是用独立布局显示
+
+### HTML 结构（追加到 `<body>` 末尾）
+
+```html
+<!-- Speaker View: opened via window.open with #speaker hash -->
+<div id="speakerView" class="speaker-view" style="display:none;">
+    <div class="speaker-top">
+        <!-- 当前页预览 -->
+        <div class="speaker-current">
+            <div class="speaker-slide-label">当前页</div>
+            <div class="speaker-slide-preview" id="speakerCurrent"></div>
+        </div>
+        <!-- 下一页预览 -->
+        <div class="speaker-next">
+            <div class="speaker-slide-label">下一页</div>
+            <div class="speaker-slide-preview" id="speakerNext"></div>
+        </div>
+        <!-- 演讲者备注 -->
+        <div class="speaker-notes" id="speakerNotes">
+            <div class="speaker-notes-label">演讲者备注</div>
+            <div class="speaker-notes-content" id="speakerNotesContent"></div>
+        </div>
+    </div>
+    <div class="speaker-bottom">
+        <div class="speaker-timer" id="speakerTimer">00:00</div>
+        <div class="speaker-progress">
+            <span id="speakerCurrentNum">1</span> / <span id="speakerTotal">1</span>
+        </div>
+        <div class="speaker-clock" id="speakerClock">00:00</div>
+    </div>
+</div>
+```
+
+### CSS（追加到 `<style>` 块末尾）
+
+```css
+/* ===========================================
+   SPEAKER VIEW
+   =========================================== */
+.speaker-view {
+    position: fixed;
+    inset: 0;
+    background: #0a0a0a;
+    color: #f0f0f0;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-body, sans-serif);
+}
+
+.speaker-top {
+    flex: 1;
+    display: flex;
+    gap: 16px;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.speaker-current,
+.speaker-next {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.speaker-slide-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+    font-weight: 600;
+}
+
+.speaker-slide-preview {
+    flex: 1;
+    background: #1a1a1a;
+    border-radius: 8px;
+    border: 1px solid #333;
+    overflow: hidden;
+    position: relative;
+}
+
+/* 将对应 slide 的 DOM 克隆到这里，缩放到约 25% */
+.speaker-slide-preview .slide {
+    position: absolute;
+    top: 0; left: 0;
+    width: 1920px;
+    height: 1080px;
+    transform: scale(0.25);
+    transform-origin: top left;
+}
+
+.speaker-notes {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: #111;
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid #333;
+    overflow-y: auto;
+}
+
+.speaker-notes-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+    font-weight: 600;
+}
+
+.speaker-notes-content {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #ccc;
+    white-space: pre-wrap;
+}
+
+.speaker-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    background: #111;
+    border-top: 1px solid #333;
+    font-size: 18px;
+}
+
+.speaker-timer {
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    color: var(--accent, #00ffcc);
+}
+
+.speaker-progress {
+    font-size: 16px;
+    color: #aaa;
+}
+
+.speaker-clock {
+    font-variant-numeric: tabular-nums;
+    color: #aaa;
+}
+
+/* Speaker view 内的幻灯片缩略图样式重置 */
+.speaker-slide-preview .deck-stage {
+    position: relative !important;
+    width: 1920px !important;
+    height: 1080px !important;
+    transform: none !important;
+}
+```
+
+### JavaScript（追加到 `<script>` 块）
+
+```javascript
+/* ===========================================
+   SPEAKER VIEW
+   =========================================== */
+class SpeakerViewController {
+    constructor(presentation) {
+        this.presentation = presentation;
+        this.channel = new BroadcastChannel('html-slides-sync');
+        this.timerInterval = null;
+        this.startTime = null;
+        this.isSpeakerWindow = window.location.hash === '#speaker';
+
+        if (this.isSpeakerWindow) {
+            this.initSpeakerWindow();
+        } else {
+            this.initMainWindow();
+        }
+    }
+
+    initMainWindow() {
+        // 主窗口：监听 S 键，打开演讲者窗口
+        document.addEventListener('keydown', (e) => {
+            if ((e.key === 's' || e.key === 'S') && !e.target.getAttribute('contenteditable')) {
+                e.preventDefault();
+                this.openSpeakerWindow();
+            }
+        });
+
+        // 监听页面变化，广播给演讲者窗口
+        this.channel.addEventListener('message', (e) => {
+            if (e.data.type === 'request-sync') {
+                this.channel.postMessage({
+                    type: 'sync',
+                    slide: this.presentation.currentSlide,
+                    total: this.presentation.totalSlides
+                });
+            }
+        });
+    }
+
+    openSpeakerWindow() {
+        const url = window.location.href.split('#')[0] + '#speaker';
+        const w = window.open(url, 'SpeakerView', 'width=1200,height=700');
+        if (!w) {
+            alert('请允许弹出窗口以启用演讲者模式');
+            return;
+        }
+        // 延迟发送初始状态（等待新窗口加载）
+        setTimeout(() => {
+            this.channel.postMessage({
+                type: 'sync',
+                slide: this.presentation.currentSlide,
+                total: this.presentation.totalSlides
+            });
+        }, 1000);
+    }
+
+    initSpeakerWindow() {
+        // 显示演讲者视图 UI
+        document.getElementById('speakerView').style.display = 'flex';
+        document.querySelector('.deck-viewport').style.display = 'none';
+
+        // 启动计时器
+        this.startTime = Date.now();
+        this.timerInterval = setInterval(() => this.updateTimer(), 1000);
+        this.updateClock();
+        setInterval(() => this.updateClock(), 1000);
+
+        // 请求初始同步
+        this.channel.postMessage({ type: 'request-sync' });
+
+        // 监听主窗口同步消息
+        this.channel.addEventListener('message', (e) => {
+            if (e.data.type === 'sync') {
+                this.updateSpeakerView(e.data.slide, e.data.total);
+            }
+        });
+
+        // 点击演讲者窗口的幻灯片预览 → 通知主窗口跳转
+        document.getElementById('speakerCurrent').addEventListener('click', () => {
+            this.channel.postMessage({ type: 'navigate', direction: 'next' });
+        });
+    }
+
+    updateSpeakerView(current, total) {
+        const slides = this.presentation
+            ? this.presentation.slides
+            : document.querySelectorAll('.slide');
+
+        // 更新页码
+        document.getElementById('speakerCurrentNum').textContent = current + 1;
+        document.getElementById('speakerTotal').textContent = total;
+
+        // 克隆当前页到预览区
+        this.renderSlidePreview('speakerCurrent', slides[current]);
+
+        // 克隆下一页到预览区（如果有）
+        if (current + 1 < total) {
+            this.renderSlidePreview('speakerNext', slides[current + 1]);
+        } else {
+            document.getElementById('speakerNext').innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#555;font-size:14px;">最后一页</div>';
+        }
+
+        // 提取演讲者备注（如果有）
+        this.extractNotes(slides[current]);
+    }
+
+    renderSlidePreview(containerId, slideEl) {
+        const container = document.getElementById(containerId);
+        if (!slideEl) {
+            container.innerHTML = '';
+            return;
+        }
+        const clone = slideEl.cloneNode(true);
+        clone.classList.add('slide');
+        clone.classList.remove('active', 'visible');
+        clone.style.position = 'absolute';
+        clone.style.top = '0';
+        clone.style.left = '0';
+        clone.style.width = '1920px';
+        clone.style.height = '1080px';
+        clone.style.margin = '0';
+        clone.style.padding = 'var(--slide-padding, 72px)';
+        container.innerHTML = '';
+        container.appendChild(clone);
+    }
+
+    extractNotes(slideEl) {
+        // 从 slide 的 data-speaker-note 属性或 .speaker-note 元素提取备注
+        let notes = '';
+        const noteEl = slideEl.querySelector('.speaker-note');
+        if (noteEl) {
+            notes = noteEl.textContent;
+        } else if (slideEl.dataset.speakerNote) {
+            notes = slideEl.dataset.speakerNote;
+        } else {
+            notes = '（无备注）';
+        }
+        document.getElementById('speakerNotesContent').textContent = notes;
+    }
+
+    updateTimer() {
+        const elapsed = Math.floor((Date.now() - this.startTime) / 1000);
+        const mins = String(Math.floor(elapsed / 60)).padStart(2, '0');
+        const secs = String(elapsed % 60).padStart(2, '0');
+        document.getElementById('speakerTimer').textContent = `${mins}:${secs}`;
+    }
+
+    updateClock() {
+        const now = new Date();
+        const h = String(now.getHours()).padStart(2, '0');
+        const m = String(now.getMinutes()).padStart(2, '0');
+        document.getElementById('speakerClock').textContent = `${h}:${m}`;
+    }
+}
+```
+
+### 演讲者备注写法
+
+在幻灯片 HTML 中加入备注（不会在普通视图显示）：
+
+```html
+<section class="slide">
+    <div class="slide-content">
+        <h2>标题</h2>
+        <p>内容...</p>
+    </div>
+    <!-- 演讲者备注：仅在演讲者模式显示 -->
+    <div class="speaker-note" style="display:none;">
+        这里写演讲者备注，观众看不到。
+        可以写提示词、数据来源、过渡语等。
+    </div>
+</section>
+```
+
+## Print / PDF Export（打印与导出）
+
+通过浏览器「打印 → 另存为 PDF」即可导出。需要添加 `@media print` 样式。
+
+### CSS（追加到 `<style>` 块末尾）
+
+```css
+/* ===========================================
+   PRINT / PDF EXPORT
+   =========================================== */
+@media print {
+    /* 重置全局样式 */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    body {
+        background: #fff !important;
+        overflow: visible !important;
+    }
+
+    /* 隐藏所有非打印元素 */
+    .deck-viewport,
+    .edit-hotzone,
+    .edit-toggle,
+    .speaker-view,
+    .progress-bar,
+    .page-number {
+        display: none !important;
+    }
+
+    /* 每页 slide 单独分页 */
+    .slide {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        width: 100vw !important;
+        height: 56.25vw !important; /* 16:9 */
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        margin: 0 !important;
+        padding: var(--slide-padding, 40px) !important;
+        overflow: hidden !important;
+    }
+
+    .slide:not(.active) {
+        display: block !important;
+    }
+
+    /* 重置舞台缩放 */
+    .deck-stage {
+        transform: none !important;
+        width: 100% !important;
+        height: 100% !important;
+        position: relative !important;
+    }
+
+    /* 显示演讲者备注（打印在幻灯片下方） */
+    .speaker-note {
+        display: block !important;
+        position: relative !important;
+        margin-top: 20px !important;
+        padding: 16px !important;
+        background: #f9f9f9 !important;
+        border-left: 4px solid #ccc !important;
+        font-size: 12px !important;
+        color: #555 !important;
+        page-break-before: avoid !important;
+    }
+
+    /* 移除动画 */
+    .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+
+    /* 设置打印页尺寸为横向，无边距 */
+    @page {
+        size: landscape;
+        margin: 0;
+    }
+}
+```
+
+### 使用方式
+
+1. 打开 HTML slides，按 `Ctrl+P`（或 `Cmd+P`）
+2. 目标打印机选择「另存为 PDF」
+3. 取消勾选「页眉和页脚」
+4. 背景图形：勾选（保留幻灯片背景）
+5. 点击「保存」
+
+---
+
+
 
 If user provides images, process them before generating HTML:
 

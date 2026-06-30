@@ -110,9 +110,12 @@ Generate the full presentation using content from Phase 1 and style from Phase 2
 5. Include SlidePresentation class with keyboard/touch/wheel navigation
 6. Include stage scaling JS (1920×1080 → viewport fit)
 7. Include inline editing feature by default (hover hotzone + E key toggle)
-8. Every element with animation uses `.reveal` class pattern
-9. Support `prefers-reduced-motion`
-10. Apply density choice throughout: speaker-led → fewer ideas per slide; reading-first → more self-contained detail
+8. **Include Speaker View** — press `S` key to open speaker window with BroadcastChannel sync (see [html-template.md](references/html-template.md) Speaker View section)
+9. **Include Print/PDF styles** — `@media print` CSS for PDF export via browser print (see [html-template.md](references/html-template.md) Print/PDF section)
+10. Support speaker notes via `.speaker-note` element or `data-speaker-note` attribute
+11. Every element with animation uses `.reveal` class pattern
+12. Support `prefers-reduced-motion`
+13. Apply density choice throughout: speaker-led → fewer ideas per slide; reading-first → more self-contained detail
 
 **Content overflow guardrails:**
 - No scrolling, no overflow, no overlapping panels inside any slide
@@ -133,6 +136,8 @@ When converting PowerPoint files:
 1. Save the final HTML file to the project directory
 2. Open via present_files for browser preview
 3. Summarize: file location, style name, slide count, navigation controls (Arrow keys, Space, swipe), CSS variable customization, inline editing (hover top-left or press E)
+4. **Tell user about Speaker View**: press `S` key to open speaker window (current slide + next slide + timer + notes)
+5. **Tell user about PDF export**: press `Ctrl+P` → "另存为 PDF"，speaker notes print below each slide
 
 ### Phase 6: Share & Export (Optional)
 
@@ -141,7 +146,7 @@ After delivery, ask: _"Would you like to share this presentation? I can deploy i
 Options: Deploy to URL / Export to PDF / Both / No thanks
 
 - **Deploy**: Use CloudStudio deploy tool (workbuddy_cloudstudio_deploy) for instant live URL
-- **PDF**: Use Playwright-based screenshot capture → merge to PDF (future script support)
+- **PDF**: User prints from browser (`Ctrl+P` → "另存为 PDF"), `@media print` styles included automatically
 
 ---
 
